@@ -1,8 +1,12 @@
 'use strict';
 
 require('dotenv').load();
+
+if(process.env.NODE_ENV === 'test'){
+  require('./backend-test/lib/test-env.js');
+}
+
 if (!process.env.API_URL || !process.env.NODE_ENV || !process.env.TITLE){
-  console.error('ERROR: ng-template requires .env file');
   process.exit(1);
 }
 
@@ -13,7 +17,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const production = process.env.NODE_ENV === 'production';
 
-console.log('env.TITLE', process.env.TITLE);
 let plugins = [
   new ExtractTextPlugin('bundle.css'),
   new HTMLPlugin({ template: `${__dirname}/app/index.html` }),
