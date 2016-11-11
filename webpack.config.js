@@ -3,8 +3,7 @@
 require('dotenv').load();
 
 if(process.env.NODE_ENV === 'test'){
-  process.env.API_URL = 'http://localhost:8888';
-  process.env.TITLE = 'abba testing';
+  require('./backend-test/lib/test-env.js');
 }
 
 if (!process.env.API_URL || !process.env.NODE_ENV || !process.env.TITLE){
