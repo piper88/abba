@@ -16,10 +16,10 @@
   "globals": {
     "angular": true,
     "window": false,
+    "document": false,
     "__API_URL__": false,
     "__GOOGLE_CLIENT_ID__": false,
     "__DEBUG__": false,
-    "document": false,
     "__TITLE__": false
 
   },
