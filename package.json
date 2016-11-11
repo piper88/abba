@@ -14,7 +14,8 @@
   "start": "node server.js",
   "start-debug": "DEBUG='abba*' npm start",
   "start-watch": "DEBUG='abba*' ./node_modules/nodemon/bin/nodemon.js server.js",
-  "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha",
+  "backend-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha ./backend-test",
+  "test": "npm run frontend-test &&  npm run backend-test",
   "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
   "lint": "./node_modules/eslint/bin/eslint.js .",
   "test-debug": "DEBUG='abba*' ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha"
