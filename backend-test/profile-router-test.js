@@ -343,7 +343,7 @@ describe('testing profile routes', function() {
     let updatedProfile = {
       firstName: 'abba2',
       lastName: 'team2',
-      phone: 4255000000,
+      phone: '4255000000',
     };
     describe('testing with valid body / id', () => {
       before(done => profileMock.call(this, done));
