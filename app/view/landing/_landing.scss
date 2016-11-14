@@ -4,7 +4,6 @@
   background: url("../../images/wood.jpg") center center fixed;
   width: 100%;
   height: 100%;
-  border: 0.5px solid blue;
   font-family: 'Monoton', cursive;
   color: $app-black;
   .navbar-default .navbar-brand {
@@ -15,7 +14,7 @@
     padding: 1%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20%;
+    padding-top: 20%;
     border-radius: 10px;
     width: 70%;
     transition: 500ms;

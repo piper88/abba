@@ -18,7 +18,8 @@ function NavbarController($log, $location, $rootScope, authService) {
   this.checkPath = function(){
     let path = $location.path();
     if (path === '/landing'){
-      this.hideButtons = false;
+      this.hideLogout = true;
+      this.hideLogin = false;
       authService.getToken()
       .then(() => {
         $location.url('/landing');
@@ -26,11 +27,8 @@ function NavbarController($log, $location, $rootScope, authService) {
     }
 
     if (path !== '/landing'){
-      this.hideButtons = false;
-      authService.getToken()
-      .catch(() => {
-        $location.url('/landing');
-      });
+      this.hideLogout = false;
+      this.hideLogin = true;
     }
   };
 
@@ -43,16 +41,15 @@ function NavbarController($log, $location, $rootScope, authService) {
   });
 
   this.login = function(){
-    this.hideButtons = true;
-    authService.login()
-    .then(() => {
-      $location.url('/profile');
-    });
+    this.hideLogout = true;
+    this.hideLogin = false;
+
+    $location.url('/login');
   };
 
   this.logout = function(){
     $log.log('navbarCtrl.logout()');
-    this.hideButtons = true;
+    this.hideLogout = true;
     authService.logout()
     .then(() => {
       $location.url('/');
