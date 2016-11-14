@@ -1,16 +1,33 @@
 @import "theme";
 
-.home {
-  .panel-heading {
-    background-color: $app-primary;
-    span {
-      font-weight: bold;
-      color: $app-secondary;
-    }
+.landing {
+  background-image: "../images/wood.jpg";
 
-    span:hover {
-      color: $app-black;
-    }
+  div {
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    width: 100%;
+    background-color: $app-disabled;
+    transition: 500ms;
+  }
+
+  h1 {
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+  }
+
+  p {
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
   }
 }
-

@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "build": "./node_modules/webpack/bin/webpack.js",
+  "build": "./node_modules/webpack/bin/webpack.js",
   "build-watch": "./node_modules/webpack/bin/webpack.js -w",
   "frontend-test": "./node_modules/karma/bin/karma start --single-run",
   "test-watch": "./node_modules/karma/bin/karma start",
