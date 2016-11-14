@@ -12,8 +12,8 @@ function SignupController($log, $location, authService){
  
   this.signup = function(user){
     authService.signup(user)
-    .then(user => {
-      
+    .then(() => {
+        
     })
     .then(() => {
       $location.path('/#/profile');
