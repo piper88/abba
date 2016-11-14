@@ -8,7 +8,6 @@ function LandingController($log, $rootScope, $location, authService){
   $log.debug('init landingCtrl');
 
   let query = $location.search();
-  console.log('query', query.token);
 
   if(query.token){
     authService.setToken(query.token)
