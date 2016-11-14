@@ -9,9 +9,9 @@ const debug = require('debug')('abba:profile');
 const profileSchema = mongoose.Schema({
   firstName: {type: String, required: true},
   lastName: {type: String, required: true},
-  phone: {type: Number, required: true},
+  phone: {type: String, required: true},
   email: {type: String, required: true, unique: true},
-  status: {type: String, required: true},
+  status: {type: String, required: false},
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},
   photo: {type: mongoose.Schema.Types.ObjectId, ref:'photo'},
 });
