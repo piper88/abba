@@ -8,10 +8,10 @@ function routerConfig($stateProvider, $urlRouterProvider){
 
   let states = [
     {
-      name: 'home',
+      name: 'landing',
       url: '/',
-      controllerAs: 'homeCtrl',
-      controller: 'HomeController',
+      controllerAs: 'landingCtrl',
+      controller: 'LandingController',
       template: require('../view/landing/landing.html'),
     },
     {
