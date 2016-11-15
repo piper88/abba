@@ -27,7 +27,7 @@ function profileService($q, $log, $http , authService) {
     .then(res => {
       $log.log('successful create profile');
       service.profile = res.data;
-      console.log('res.data', res.data);
+      return res.data;
     })
     .catch( err => {
       $log.error(err.message);

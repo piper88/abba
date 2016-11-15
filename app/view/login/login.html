@@ -3,7 +3,7 @@
     <form role="form" ng-submit="signupCtrl.signup(signupCtrl.user, signupCtrl.profile)">
       <div class="row">
         <div class="col-xs-12 col-md-12">
-          <input value="Sign in with Google" class="btn btn-info btn-block btn-lg" tabindex="7">
+          <a ng-href="{{loginCtrl.googleAuthURL}}" class="btn btn-info btn-block btn-lg" tabindex="1">Login with Google</a>
           <signin ng-if="loginCtrl.showSignin"></signin>
           <a href="/#/login#signin" ng-click="loginCtrl.showSignin=false" ng-if="loginCtrl.showSignin">Already a member? Go to login</a>
 
