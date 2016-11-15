@@ -48,7 +48,7 @@ function profileService($q, $log, $http , authService) {
         },
       };
 
-      return $http.put(url, config);
+      return $http.get(url, config);
     })
     .then(res => {
       $log.log('successful fetch user profile');
@@ -86,7 +86,7 @@ function profileService($q, $log, $http , authService) {
       return $q.reject(err);
     });
   };
-  
+
   return service;
 }
 
