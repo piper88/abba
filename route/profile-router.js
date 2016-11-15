@@ -67,3 +67,16 @@ profileRouter.put('/api/profile/:id', bearerAuth, jsonParser, function(req, res,
     next(createError(404, 'not found'));
   });
 });
+
+profileRouter.get('/api/profile', bearerAuth, function(req, res, next){
+  debug('GET /api/profile');
+
+  Profile.findOne({
+    userID: req.user._id,
+  })
+  .then((profile) => {
+    if (!profile) return next(createError(404, 'profile not found'));
+    res.json(profile);
+  })
+  .catch(next);
+});

@@ -3,8 +3,9 @@
 require('./_residence.scss');
 
 module.exports = {
-
+  template: require('./residence.html'),
   controller: ['$log', '$window', '$rootScope', '$location', 'authService', 'residenceService', ResidenceController],
+  controllerAs: 'residenceCtrl',
 };
 
 function ResidenceController($log, $window, $rootScope, $location, authService, residenceService){
