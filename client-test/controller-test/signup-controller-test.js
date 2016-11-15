@@ -7,10 +7,11 @@
 
 //   beforeEach(() => {
 //     angular.mock.module(camelcase(__TITLE__));
-//     angular.mock.inject(($rootScope, authService, $componentController, $httpBackend, $location) => {
+//     angular.mock.inject(($q, $rootScope, authService, profileService, $componentController, $httpBackend, $location) => {
 //       authService.setToken('10001');
-
+//       this.$q = $q;
 //       this.authService = authService;
+//       this.profileService = profileService;
 //       this.$rootScope = $rootScope;
 //       this.$componentController = $componentController;
 //       this.$httpBackend = $httpBackend;
@@ -19,40 +20,46 @@
 //   });
 
 //   afterEach(() => {
-//     this.$httpBackend.verifyNoOutstandingExpectation();
 //     this.$httpBackend.verifyNoOutstandingRequest();
+//     this.$httpBackend.verifyNoOutstandingExpectation();
 //     this.authService.logout();  
 //   });
 
 //   describe('testing signup-controller: create user', () => {
-//     // it('it should create a user', () => {
-//     //   let user = {
-//     //     email: 'ABBA',
-//     //     password: '1234',
-//     //   };
-//     //   let profile = {
-//     //     firstName: 'ABBA',
-//     //     lastName: '1234',
-//     //     email: user.email,
-//     //     phone: '555-555-5550',
-//     //   };
-      
-//     //   let headers = {
-//     //     'Accept': 'application/json',
-//     //     'Content-Type': 'application/json',
-//     //   };
+//     let user = {
+//       email: 'ABBA3300@gmail.com',
+//       password: '1234',
+//     };
+//     let profile = {
+//       firstName: 'Abba',
+//       lastName: 'Abba app',
+//       email: user.email,
+//       phone: '(425)-598-555',
+//       status: 'owner',
+//     };
+    
+//     it('it should create a user and profile', () => {
+//       let headers = {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json',
+//       };
 
-//     //   this.$httpBackend.expectPOST(url, user, headers)
-//     //   .respond(200, {_id:'23770504', email: 'ABBA@app.com', password:'1234'});
+//       spyOn(this.authService, 'signup');
+//       spyOn(this.profileService, 'createProfile');
 
-//     //   let signupCtrl = this.$componentController('signup');
+//       this.$httpBackend.expectPOST(url, user, headers)
+//       .respond(200);
+//       // this.$httpBackend.expectPOST('http://localhost:3000/api/profile', profile, headers)
+//       //.respond(200, {_id: '23770504', firstName: 'Abba', lastName: 'Abba app', email: 'abba@gmail.com', phone: '(425)-598-555', status: 'owner'});
 
-//     //   signupCtrl.signup(user, profile);
-//     //   this.$httpBackend.flush();
-//     //   this.$rootScope.$apply();
-
-//     //   expect(this.$location.path()).toBe('/profile');
-//     //   //expect(true).toEqual(true);
-//     // });
+//       let signupCtrl = this.$componentController('signup'); 
+     
+//       signupCtrl.signup(user, profile);
+//       this.$httpBackend.flush();
+//       this.$rootScope.$apply();
+//       expect(true).toBe(true);
+//       //expect(this.authService.signup).toHaveBeenCalledWith(user);
+//      // expect(this.profileService.createProfile).toHaveBeenCalledWith(profile);
+//     });
 //   });
 // });
