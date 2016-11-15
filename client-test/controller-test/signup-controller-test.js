@@ -67,8 +67,6 @@ describe('testing signup controller', function() {
       this.$httpBackend.flush();
       this.$rootScope.$apply();
       expect(true).toBe(true);
-      //expect(this.authService.signup).toHaveBeenCalledWith(user);
-     // expect(this.profileService.createProfile).toHaveBeenCalledWith(profile);
     });
   });
 });
