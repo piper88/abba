@@ -1,6 +1,7 @@
 <main>
   <nav class="residence-list-container">
     <input ng-model="residenceCtrl.residenceSearchTerm" type="text" placeholder="Search ... ">
+    <residence> </residence>
     <ul>
       <residence-li
         ng-repeat=" item in residenceCtrl.residences | residence.Search:residenceCtrl.residenceSearchTerm"
@@ -8,6 +9,5 @@
         delete-done="residenceCtrl.residenceDeleteDone(residenceData)"
         residence="item"> </residence-li>
     </ul>
-    <create-residence> </create-residence>
   </nav>
 </main>

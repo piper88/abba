@@ -12,7 +12,7 @@ function ResidenceService($q, $log, $http, authService){
 
     return authService.getToken()
     .then ( token => {
-      let url = `${__API_URL__}/api/profile/residence`;
+      let url = `${__API_URL__}/api/profile`;
       let config = {
         headers: {
           Accept: 'application/json',

@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-md-offset-3 col-md-6">
     <signin ng-if="loginCtrl.showSignin"></signin>
-    <a href="/#/login#signin" ng-click="loginCtrl.showSignin=false" ng-if="loginCtrl.showSignin">Already a member? Go to login</a>
+    <button ng-click="loginCtrl.showSignin=false"> Sign up <button>
+    <!-- <a href="/#/login" ng-click="loginCtrl.showSignin=false" ng-if="loginCtrl.showSignin">Already a member? Go to login</a> -->
 
     <signup ng-if="!loginCtrl.showSignin"></signup>
-    <a href="/#/login#signup" ng-click="loginCtrl.showSignin=true" ng-if="!loginCtrl.showSignin">Not a member yet? Go to Signup</a>
+        <button ng-click="loginCtrl.showSignin=true"> Login <button>
+    <!-- <a href="/#/s" ng-click="loginCtrl.showSignin=true" ng-if="!loginCtrl.showSignin">Not a member yet? Go to Signup</a> -->
   </div>
 </div>
