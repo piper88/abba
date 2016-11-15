@@ -21,7 +21,7 @@ function SignupController($log, $location, authService, profileService){
     })
     .then(profileData => {
       this.profile = profileData;
-      $location.path('/#/login');
+      $location.path('/profile');
     })
     .catch(() => {
       console.log('faild to signup');
