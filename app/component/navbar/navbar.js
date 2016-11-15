@@ -45,6 +45,7 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
   $window.onload = pageLoadHandler.bind(this);
   $rootScope.$on('locationChangeSuccess', pageLoadHandler.bind(this));
 
+//do we need to call authService.login()?
   this.login = function() {
     this.hideLogout = true;
     this.hideLogin = false;

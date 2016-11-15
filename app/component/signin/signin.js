@@ -3,19 +3,19 @@
 module.exports = {
   template: require('./signin.html'),
   controller: ['$log', '$location', 'authService', SigninController],
-  controllerAs: 'signupCtrl',
+  controllerAs: 'signinCtrl',
 };
 
 function SigninController($log, $location, authService) {
   $log.debug('init SigninCtrl');
 
   //need user email and password
-  this.signin = function(user){
+  this.signin = function(){
     $log.debug('inti SigninCtrl.signin()');
     //authService
-    authService.login(user)
+    authService.login(this.user)
     .then(() => {
-      $location.path('/#/profile');
+      $location.path('/profile');
     })
     .catch(() => {
       console.log('failed to signin');
