@@ -2,4 +2,4 @@
 
 require('./_profile.scss');
 
-module.exports = [function(){}];
+module.exports = [];
