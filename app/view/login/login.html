@@ -5,10 +5,12 @@
         <div class="col-xs-12 col-md-12">
           <input value="Sign in with Google" class="btn btn-info btn-block btn-lg" tabindex="7">
           <signin ng-if="loginCtrl.showSignin"></signin>
-          <a href="/#/login#signin" ng-click="loginCtrl.showSignin=false" ng-if="loginCtrl.showSignin">Already a member? Go to login</a>
+
 
           <signup ng-if="!loginCtrl.showSignin"></signup>
-          <a href="/#/login#signup" ng-click="loginCtrl.showSignin=true" ng-if="!loginCtrl.showSignin">Not a member yet? Go to Signup</a>
+
+          <button class="btn btn-default" ng-if="!loginCtrl.showSignin" autofocus=""ng-click="loginCtrl.showSignin=true"> Login </button>
+          <button class="btn btn-default" ng-if="loginCtrl.showSignin" ng-click="loginCtrl.showSignin=false"> Sign up </button>
         </div>
       </div>
     </form>
