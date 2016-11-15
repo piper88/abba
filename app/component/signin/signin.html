@@ -1,0 +1,26 @@
+<form novalidate ng-submit="signinCtrl.signin()">
+	<div class="login-or">
+			<hr class="hr-or">
+			<span class="span-or">or</span>
+	</div>
+
+	<hr class="colorgraph">
+
+	<div class="form-group">
+		<input type="email" name="email" id="email" class="form-control input-lg" ng-model="signinCtrl.user.email" placeholder="Email Address" tabindex="4">
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="form-group">
+				<input type="password" name="password" id="password" class="form-control input-lg" ng-model="signinCtrl.user.password" placeholder="Password" tabindex="5">
+			</div>
+		</div>
+	</div>
+
+	<hr class="colorgraph">
+
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+			<input type="submit" value="Login in" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+	</div>
+</form>

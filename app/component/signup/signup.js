@@ -4,22 +4,27 @@ require('./_signup.scss');
 
 module.exports = {
   template: require('./signup.html'),
-  controller: ['$log', '$location', 'authService', SignupController],
+  controller: ['$log', '$location', 'authService','profileService', SignupController],
   controllerAs: 'signupCtrl',
 };
 
-function SignupController($log, $location, authService){
- 
-  this.signup = function(user){
-    authService.signup(user)
-    .then(user => {
-      
-    })
+function SignupController($log, $location, authService, profileService){
+  $log.debug('init Singup Ctrl');
+
+  this.signup = function(){
+    $log.debug('init singupCtrl.signup()');
+
+    return authService.signup(this.user)
     .then(() => {
-      $location.path('/#/profile');
+      this.profile.email = this.user.email;
+      return profileService.createProfile(this.profile);
+    })
+    .then(profileData => {
+      this.profile = profileData;
+      $location.path('/profile');
     })
     .catch(() => {
-      console.log('faild to signup');
+      console.log('failed to signup');
     });
   };
 }

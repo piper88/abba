@@ -1,5 +1,18 @@
 <div class="row">
-  <div class="col-md-offset-3 col-md-6">
-    <signup></signup>
+  <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6">
+    <form role="form" ng-submit="signupCtrl.signup(signupCtrl.user, signupCtrl.profile)">
+      <div class="row">
+        <div class="col-xs-12 col-md-12">
+          <a ng-href="{{loginCtrl.googleAuthURL}}" class="btn btn-info btn-block btn-lg" tabindex="1">Login with Google</a>
+          <signin ng-if="loginCtrl.showSignin"></signin>
+
+
+          <signup ng-if="!loginCtrl.showSignin"></signup>
+
+          <button class="btn btn-default" ng-if="!loginCtrl.showSignin" autofocus=""ng-click="loginCtrl.showSignin=true"> Login </button>
+          <button class="btn btn-default" ng-if="loginCtrl.showSignin" ng-click="loginCtrl.showSignin=false"> Sign up </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

@@ -343,7 +343,7 @@ describe('testing profile routes', function() {
     let updatedProfile = {
       firstName: 'abba2',
       lastName: 'team2',
-      phone: 4255000000,
+      phone: '4255000000',
     };
     describe('testing with valid body / id', () => {
       before(done => profileMock.call(this, done));
@@ -369,7 +369,7 @@ describe('testing profile routes', function() {
 
     describe('testing with Invalid id', () => {
       it('should return a error for updating with Invalid id', done => {
-        request.put(`${url}/api/profile/${8888}`)
+        request.put(`${url}/api/profile/${3000}`)
         .set({
           Authorization: `Bearer ${this.tempToken}`,
         })

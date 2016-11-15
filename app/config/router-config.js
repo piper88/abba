@@ -9,7 +9,7 @@ function routerConfig($stateProvider, $urlRouterProvider){
   let states = [
     {
       name: 'landing',
-      url: '/',
+      url: '/landing',
       controllerAs: 'landingCtrl',
       controller: 'LandingController',
       template: require('../view/landing/landing.html'),

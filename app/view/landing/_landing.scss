@@ -1,16 +1,57 @@
 @import "theme";
 
-.home {
-  .panel-heading {
-    background-color: $app-primary;
-    span {
-      font-weight: bold;
-      color: $app-secondary;
+.landing {
+  // background: url("../../images/bk.jpg") center center  no-repeat cover;
+  // width: 100%;
+  // height: 100%;
+  // font-family: 'Monoton', cursive;
+  // color: $app-black;
+    background-image: url('../../images/bk.jpg');
+    background-position: top center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #fff;
+    padding: 100px 0;
+    position: relative;
+    height:100vh;
+
+  .navbar-default .navbar-brand {
+    color: $app-black;
+  }
+  .slogan {
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3%;
+    border-radius: 10px;
+    width: 70%;
+    transition: 500ms;
+
+
+    h1 {
+      padding: 1%;
+      font-size: 15em;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 5px;
+      width: 100%;
+      text-align: center;
+      color:#fff;
+      line-height: 160px;
+      // font-family: 'Monoton', cursive;
     }
 
-    span:hover {
-      color: $app-black;
+    p {
+      padding: 1%;
+      font-size: 2em;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 5px;
+      width: 100%;
+      text-align: center;
+      font-family: sans-serif;
+      color:#fff;
     }
   }
 }
-
