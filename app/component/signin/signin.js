@@ -15,7 +15,7 @@ function SigninController($log, $location, authService) {
     //authService
     authService.login(user)
     .then(() => {
-      $location.path('/profile');
+      $location.path('/#/profile');
     })
     .catch(() => {
       console.log('failed to signin');

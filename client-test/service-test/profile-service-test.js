@@ -5,7 +5,7 @@ const camelcase = require('camelcase');
 describe('testing profile service', function() {
   var url = 'http://localhost:3000/api';
   let profileData = {
-    _id: '1111',
+    _id: '23770504',
     firstName: 'Abba',
     lastName: 'Abba app',
     email: 'abba@gmail.com',
@@ -27,6 +27,7 @@ describe('testing profile service', function() {
 
   afterEach(() => {
     this.authService.setToken(null);
+    this.profileService.profile = null;
     this.$window.localStorage.clear();
   });
 
@@ -80,7 +81,7 @@ describe('testing profile service', function() {
         'Content-Type':'application/json;charset=utf-8',
       };
       this.$httpBackend.expectPUT(`${url}/profile/${profileData._id}`, profileData, headers)
-      .respond(200,  {_id:'1111', firstName: 'updated name',  lastName: 'updated name'});
+      .respond(200,  {_id:'23770504', firstName: 'updated name',  lastName: 'updated name'});
 
       this.profileService.updateProfile(profileData._id, profileData)
       .then(profile => {

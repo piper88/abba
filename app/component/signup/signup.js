@@ -17,11 +17,11 @@ function SignupController($log, $location, authService, profileService){
     return authService.signup(user)
     .then(() => {
       profile.email = user.email;
-      profileService.createProfile(profile);
+      return profileService.createProfile(profile);
     })
     .then(profileData => {
       this.profile = profileData;
-      Promise.resolve($location.path('/#/login'));
+      $location.path('/#/login');
     })
     .catch(() => {
       console.log('faild to signup');
