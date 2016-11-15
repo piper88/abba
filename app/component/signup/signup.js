@@ -14,13 +14,14 @@ function SignupController($log, $location, authService, profileService){
   this.signup = function(user, profile){
     $log.debug('init singupCtrl.signup()');
 
-    authService.signup(user)
+    return authService.signup(user)
     .then(() => {
       profile.email = user.email;
       profileService.createProfile(profile);
     })
-    .then(() => {
-      $location.path('/profile');
+    .then(profileData => {
+      this.profile = profileData;
+      Promise.resolve($location.path('/#/login'));
     })
     .catch(() => {
       console.log('faild to signup');

@@ -15,7 +15,8 @@ function LoginController($log, $rootScope, $location, authService){
   if(query.token){
     authService.setToken(query.token)
     .then(() => {
-      $location.path('/#/profile');
+      $location.path('/profile');
     });
   }
+  
 }

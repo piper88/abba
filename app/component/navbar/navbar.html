@@ -1,6 +1,6 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"> {{ navbarCtrl.appTitle }} </a>
+    <a class="navbar-brand" href="/"> <img src="../../images/abba-icon.png"></a>
     <div>
       <div ng-hide="navbarCtrl.hideLogout">
         <button
@@ -13,7 +13,7 @@
       <div ng-hide="navbarCtrl.hideLogin">
         <button
           ng-click="navbarCtrl.login()"
-          class="btn pull-right btn-default navbar-btn btn-login">
+          class="btn pull-right btn-primary navbar-btn btn-login">
           Login
         </button>
       </div>
