@@ -22,7 +22,7 @@ describe('testing signup controller', function() {
   afterEach(() => {
     this.$httpBackend.verifyNoOutstandingRequest();
     this.$httpBackend.verifyNoOutstandingExpectation();
-    this.authService.logout();  
+    this.authService.logout();
   });
 
   describe('testing signup-controller: create user', () => {
@@ -30,6 +30,7 @@ describe('testing signup controller', function() {
       email: 'ABBA3300@gmail.com',
       password: '1234',
     };
+
     let profile = {
       firstName: 'Abba',
       lastName: 'Abba app',
@@ -37,7 +38,7 @@ describe('testing signup controller', function() {
       phone: '(425)-598-555',
       status: 'owner',
     };
-    
+
     it('it should create a user and profile', () => {
       let headers = {
         'Accept': 'application/json',
@@ -56,9 +57,10 @@ describe('testing signup controller', function() {
       this.$httpBackend.expectPOST('http://localhost:3000/api/profile', profile, profileHeaders)
       .respond(200, {_id: '23770504', firstName: 'Abba', lastName: 'Abba app', email: 'abba@gmail.com', phone: '(425)-598-555', status: 'owner'});
 
-      let signupCtrl = this.$componentController('signup'); 
-     
-      signupCtrl.signup(user, profile)
+      let signupCtrl = this.$componentController('signup');
+      signupCtrl.user = user;
+      signupCtrl.profile = profile;
+      signupCtrl.signup()
       .then(() => {
         expect(signupCtrl.profile.firstName).toEqual('Abba');
       });

@@ -59,7 +59,7 @@ function authService($q, $log, $http, $window){
     $log.debug('authService.login()');
     let url = `${__API_URL__}/api/login`;
     // base64 encoded 'username:password'
-    let base64 = $window.btoa(`${user.username}:${user.password}`);
+    let base64 = $window.btoa(`${user.email}:${user.password}`);
 
     let config = {
       headers: {

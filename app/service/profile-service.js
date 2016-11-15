@@ -7,7 +7,7 @@ function profileService($q, $log, $http , authService) {
 
   let service = {};
   service.profile;
-  
+
   service.createProfile = function(profile) {
     $log.debug('profileService.createProfile()');
 
@@ -35,12 +35,12 @@ function profileService($q, $log, $http , authService) {
     });
   };
 
-  service.fetchProfile = function(profileID) {
+  service.fetchProfile = function() {
     $log.debug('profileService.fetchProfile()');
 
     return authService.getToken()
     .then( token => {
-      let url = `${__API_URL__}/api/profile/${profileID}`;
+      let url = `${__API_URL__}/api/profile`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -89,5 +89,3 @@ function profileService($q, $log, $http , authService) {
 
   return service;
 }
-
-
