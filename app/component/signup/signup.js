@@ -11,20 +11,20 @@ module.exports = {
 function SignupController($log, $location, authService, profileService){
   $log.debug('init Singup Ctrl');
 
-  this.signup = function(user, profile){
+  this.signup = function(){
     $log.debug('init singupCtrl.signup()');
 
-    return authService.signup(user)
+    return authService.signup(this.user)
     .then(() => {
-      profile.email = user.email;
-      return profileService.createProfile(profile);
+      this.profile.email = this.user.email;
+      return profileService.createProfile(this.profile);
     })
     .then(profileData => {
       this.profile = profileData;
-      $location.path('/#/login');
+      $location.path('/profile');
     })
     .catch(() => {
-      console.log('faild to signup');
+      console.log('failed to signup');
     });
   };
 }
