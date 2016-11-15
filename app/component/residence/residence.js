@@ -11,7 +11,6 @@ function ResidenceController($log, $window, $rootScope, $location, authService, 
   $log.debug('init homeCtrl');
 
   this.today = new Date();
-
   this.residences = [];
 
   this.fetchResidences = function(){
