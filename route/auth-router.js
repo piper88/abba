@@ -40,6 +40,7 @@ authRouter.get('/api/login', basicAuth, function(req, res, next){
 authRouter.get('/api/auth/oauth_abba_callback', googleOAUTH, function(req, res) {
   debug('GET /api/oauth/oauth_abba_callback');
   if(req.googleError) {
+    console.log('req.googleError', req.googleError);
     return res.redirect('/#/login');
   }
 
@@ -50,6 +51,7 @@ authRouter.get('/api/auth/oauth_abba_callback', googleOAUTH, function(req, res) 
     return user;
   })
   .catch( err => {
+    console.log('------', err.message);
     if(err.message === 'user not found') {
       let userData = {
         username: req.googleOAUTH.email,
@@ -68,11 +70,13 @@ authRouter.get('/api/auth/oauth_abba_callback', googleOAUTH, function(req, res) 
   })
   .then(user => user.generateToken())
   .then(token => {
-   // res.redirect(`/#/profile/?token=${token}`);
+    res.redirect(`/#/profile/?token=${token}`);
+    console.log('token ------>' , token);
     //res.redirect('/#/profile');
     return token;
   })
-  .catch(() => {
+  .catch(err => {
+    console.log('error token',err.message);
     res.redirect('/#/login');
   });
 });
