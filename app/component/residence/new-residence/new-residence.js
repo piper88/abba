@@ -10,6 +10,7 @@ module.exports = {
 
 function NewResidenceController($log, $window, $rootScope, $location, authService, residenceService){
   $log.debug('init residenceCtrl');
+  this.newResidences = [];
   
   this.createNewResidence = function(residence){
     $log.debug('init createNewResidences()');
@@ -18,7 +19,14 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
     return residenceService.createResidence(residence)
    .then( residence => {
      this.newResidence = residence;
+     this.newResidences.push(residence);
      console.log('newResidenc', this.newResidence);
    });
+  };
+  this.getResidence = function(residenceData) {
+    
+    this.currentResidence = residenceData;
+    console.log(this.currentResidence);
+    return this.currentResidence;
   };
 }

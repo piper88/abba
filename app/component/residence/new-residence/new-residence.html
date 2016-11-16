@@ -1,65 +1,82 @@
 
-<form class="form-horizontal"
-  novalidate
-  ng-submit="newResidenceCtrl.createNewResidence(newResidenceCtrl.residence)">
-  <!-- Text input-->
-  <!--<div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">dateBuilt</label>
-    <div class="col-md-4">
-      <input id="dateBuilt" name="dateBuilt" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.dateBuilt">
-    </div>
-  </div>-->
+<div class="row">
+  <form class="form-horizontal col-md-6"
+    novalidate
+    ng-submit="newResidenceCtrl.createNewResidence(newResidenceCtrl.residence)">
+    <!-- Text input-->
+    <!--<div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">dateBuilt</label>
+      <div class="col-md-4">
+        <input id="dateBuilt" name="dateBuilt" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.dateBuilt">
+      </div>
+    </div>-->
 
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">type</label>
-    <div class="col-md-4">
-      <input id="type" name="type"  class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.type" required>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">type</label>
+      <div class="col-md-4">
+        <input id="type" name="type"  class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.type" required>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">sqft</label>
+      <div class="col-md-4">
+      <input id="sqft" name="sqft" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.sqft" required>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">street</label>
+      <div class="col-md-4">
+      <input id="street" name="street" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.street" required>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">city</label>
+      <div class="col-md-4">
+      <input id="city" name="city" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.city" required>
+      </div>
+    </div>
+
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">zip</label>
+      <div class="col-md-4">
+      <input id="zip" name="zip" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.zip" required>
+      </div>
+    </div>
+
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">state</label>
+      <div class="col-md-4">
+      <input id="state" name="textinput" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.state" required>
+      </div>
+    </div>
+
+    <!-- Button -->
+    <button type="submit" class="btn btn-primary">Add Residence</button>
+  </form>
+  <div class="col-md-3">
+    <div class="list-group" ng-repeat="residence in newResidenceCtrl.newResidences">
+      <button class="btn btn-primary btn-round" ng-click="newResidenceCtrl.getResidence(residence)">New Bedroom </button>
+      <h2> Type: {{ residence.type }} </h2>
+      <p class="list-group-item-text">{{ residence.type }}</p>
+      <p class="list-group-item-text">{{ residence.sqft }} sqft</p>
+      <p class="list-group-item-text">{{ residence.street }}</p>
+      <p class="list-group-item-text">{{ residence.city }}</p>
+      <p class="list-group-item-text">{{ residence.zip | uppercase }}</p>
+      <p class="list-group-item-text">{{ residence.state }}</p>
     </div>
   </div>
-
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">sqft</label>
-    <div class="col-md-4">
-    <input id="sqft" name="sqft" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.sqft" required>
-    </div>
+  <div class="col-md-12">{{newResidenceCtrl.currentResidence}}
+    <new-bedroom residence-data="newResidenceCtrl.currentResidence"></new-bedroom>
   </div>
-
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">street</label>
-    <div class="col-md-4">
-    <input id="street" name="street" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.street" required>
-    </div>
-  </div>
-
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">city</label>
-    <div class="col-md-4">
-    <input id="city" name="city" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.city" required>
-    </div>
-  </div>
-
-
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">zip</label>
-    <div class="col-md-4">
-    <input id="zip" name="zip" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.zip" required>
-    </div>
-  </div>
-
-
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">state</label>
-    <div class="col-md-4">
-    <input id="state" name="textinput" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.state" required>
-    </div>
-  </div>
-
-  <!-- Button -->
-   <button type="submit" class="btn btn-primary">Add Residence</button>
-</form>
+</div>
