@@ -6,6 +6,9 @@ module.exports = {
   template: require('./list-residence.html'),
   controller: ['$log', '$window', '$rootScope', '$location', 'authService', 'residenceService', ResidenceController],
   controllerAs: 'listResidenceCtrl',
+  bindings: {
+    residence: '<',
+  },
 };
 
 function ResidenceController($log, $window, $rootScope, $location, authService, residenceService){

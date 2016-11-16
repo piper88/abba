@@ -3,10 +3,20 @@
 require('./_profile.scss');
 
 
-module.exports = ['$log', '$q', '$http', 'profileService', ProfileController ];
+module.exports = ['$log', '$q', '$http', 'profileService', 'residenceService', ProfileController ];
 
-function ProfileController($log, $q, $http, profileService){
+function ProfileController($log, $q, $http, profileService, residenceService){
   $log.debug('init LoginController');
+
+  this.residences = [];
+
+  this.fetchResidences = function(){
+    residenceService.fetchResidences()
+    .then( residences => {
+      this.residences = residences;
+      this.currentResidence = residences[0];
+    });
+  };
 
   this.fetchProfile = function() {
     profileService.fetchProfile()
