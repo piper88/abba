@@ -81,29 +81,29 @@ describe('testing residence routes', function() {
       });
     }); //end of no body
 
-    describe('with duplicate address', function() {
-      before(done => residenceMock.call(this, done));
-
-      it('should return a 409 error', (done) => {
-        request.post(`${url}/api/residence`)
-        .set({Authorization: `Bearer ${this.tempToken}`})
-        .send({
-          dateBuilt: this.tempResidence.dateBuilt,
-          sqft: this.tempResidence.sqft,
-          type: this.tempResidence.type,
-          street: this.tempResidence.street,
-          city: this.tempResidence.city,
-          state: this.tempResidence.state,
-          zip: this.tempResidence.zip,
-          address: this.tempResidence.address,
-        })
-        .end((err, res) => {
-          expect(res.status).to.equal(409);
-          expect(res.text).to.equal('ConflictError');
-          done();
-        });
-      });
-    }); //end of duplicate email
+    // describe('with duplicate address', function() {
+    //   before(done => residenceMock.call(this, done));
+    //
+    //   it('should return a 409 error', (done) => {
+    //     request.post(`${url}/api/residence`)
+    //     .set({Authorization: `Bearer ${this.tempToken}`})
+    //     .send({
+    //       dateBuilt: this.tempResidence.dateBuilt,
+    //       sqft: this.tempResidence.sqft,
+    //       type: this.tempResidence.type,
+    //       street: this.tempResidence.street,
+    //       city: this.tempResidence.city,
+    //       state: this.tempResidence.state,
+    //       zip: this.tempResidence.zip,
+    //       address: this.tempResidence.address,
+    //     })
+    //     .end((err, res) => {
+    //       expect(res.status).to.equal(409);
+    //       expect(res.text).to.equal('ConflictError');
+    //       done();
+    //     });
+    //   });
+    // }); //end of duplicate email
 
     describe('with no street', function(){
       before(done => residenceMock.call(this, done));
