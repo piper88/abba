@@ -120,7 +120,7 @@ describe('testing residence service', function() {
     });
   });
 
-  describe('testing residenceService.createBedroom', () => {
+  describe('testing residenceService.createNewBedroom', () => {
     it('should create a new Bedroom', () => {
 
       let headers = {
