@@ -9,7 +9,7 @@ module.exports = {
 };
 
 function ResidenceController($log, $window, $rootScope, $location, authService, residenceService){
-  $log.debug('init homeCtrl');
+  $log.debug('init residenceCtrl');
 
   this.today = new Date();
   this.residences = [];
@@ -17,20 +17,20 @@ function ResidenceController($log, $window, $rootScope, $location, authService, 
   this.fetchResidences = function(){
     residenceService.fetchResidences()
    .then( residences => {
-     this.residences = residences;
+     this.residences.push(residences);
      this.currentResidence = residences[0];
    });
   };
 
-  this.residenceDeleteDone = function(residence){
-    $log.debug('residenceCtrl.residenceDeleteDone()');
-    if (this.currentResidence._id === residence._id){
-      this.currentResidence = null;
-    }
-  };
+  // this.residenceDeleteDone = function(residence){
+  //   $log.debug('residenceCtrl.residenceDeleteDone()');
+  //   if (this.currentResidence._id === residence._id){
+  //     this.currentResidence = null;
+  //   }
+  // };
 
-  this.fetchResidences();
-  $rootScope.$on('$locationChangeSuccess', () => {
-    this.fetchResidences();
-  });
+  // this.fetchResidences();
+  // $rootScope.$on('$locationChangeSuccess', () => {
+  //   this.fetchResidences();
+  // });
 }

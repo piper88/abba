@@ -34,6 +34,17 @@ residenceRouter.get('/api/residence/:id', bearerAuth, function(req, res, next){
   .catch(next);
 });
 
+residenceRouter.get('/api/residence', bearerAuth, function(req, res, next){
+  debug('GET /api/residence');
+  Residence.find({
+    userID: req.user._id.toString(),
+  })
+  .then(residence => {
+    if (!residence) return next(createError(404, 'profile not found'));
+    res.json(residence);
+  })
+  .catch(next);
+});
 
 residenceRouter.delete('/api/residence/:id', bearerAuth, function(req, res, next) {
   debug('DELETE /api/residence/:id');
