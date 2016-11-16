@@ -6,7 +6,8 @@ function ResidenceService($q, $log, $http, authService){
   $log.debug('init ResidenceService');
   let service = {};
   service.residences = [];
-
+  service.bedrooms = [];
+  
   service.createResidence = function(residence){
     $log.debug('ResidenceService.createResidence()');
 
@@ -80,6 +81,33 @@ function ResidenceService($q, $log, $http, authService){
       return;
     })
     .catch( err => {
+      $log.error(err.message);
+      return $q.reject(err);
+    });
+  };
+
+  service.addNewBedroom = function(residenceID, bedroom) {
+    $log.debug('ResidenceService.addNewBedroom()');
+
+    return authService.getToken()
+    .then ( token => {
+      let url = `${__API_URL__}/api/residence/${residenceID}/bedroom`;
+      let config = {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      return $http.post(url, bedroom, config);
+    })
+    .then ( res => {
+      $log.log('successful create bedroom');
+      let bedroom = res.data;
+      service.bedrooms.unshift(bedroom);
+      return bedroom;
+    })
+    .catch ( err => {
       $log.error(err.message);
       return $q.reject(err);
     });
