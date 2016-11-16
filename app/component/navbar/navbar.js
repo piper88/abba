@@ -34,11 +34,12 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
       .catch(() => {
         let query = $location.search();
         if (query.token) {
-          authService.setToken(query.token)
+          return authService.setToken(query.token)
             .then(() => {
               $location.url('/profile');
             });
         }
+        $location.url('/landing');
       });
   }
 
