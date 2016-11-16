@@ -6,7 +6,7 @@ require('./_profile.scss');
 module.exports = ['$log', '$q', '$http', 'profileService', ProfileController ];
 
 function ProfileController($log, $q, $http, profileService){
-  $log.debug('init LoginßController');
+  $log.debug('init LoginController');
 
   this.fetchProfile = function() {
     profileService.fetchProfile()
@@ -15,7 +15,7 @@ function ProfileController($log, $q, $http, profileService){
     })
     .catch((err) => {
       $log.error(err, err.message);
-      // return $q.reject(err);
+      return $q.reject(err);
     });
   };
 
