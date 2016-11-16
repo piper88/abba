@@ -4,23 +4,26 @@ require('./_list-residence.scss');
 
 module.exports = {
   template: require('./list-residence.html'),
-  controller: ['$log', '$window', '$rootScope', '$location', 'authService', 'residenceService', ListResidenceController],
+  controller: ['$log', ListResidenceController],
   controllerAs: 'listResidenceCtrl',
+  bindings: {
+    residence: '<',
+  },
 };
 
-function ListResidenceController($log, $window, $rootScope, $location, authService, residenceService){
+function ListResidenceController($log){
   $log.debug('init residenceCtrl');
 
-  this.today = new Date();
-  this.residences = [];
-
-  this.fetchResidences = function(){
-    residenceService.fetchResidences()
-   .then( residences => {
-     this.residences.push(residences);
-     this.currentResidence = residences[0];
-   });
-  };
+  // this.today = new Date();
+  // // this.residences = [];
+  //
+  // this.fetchResidences = function(){
+  //   residenceService.fetchResidences()
+  //  .then( residences => {
+  //    this.residences.push(residences);
+  //    this.currentResidence = residences[0];
+  //  });
+  // };
 
   // this.residenceDeleteDone = function(residence){
   //   $log.debug('residenceCtrl.residenceDeleteDone()');

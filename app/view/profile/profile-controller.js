@@ -3,10 +3,21 @@
 require('./_profile.scss');
 
 
-module.exports = ['$log', '$q', '$http', 'profileService', ProfileController ];
+module.exports = ['$log', '$q', '$http', '$rootScope', 'profileService', 'residenceService', ProfileController ];
 
-function ProfileController($log, $q, $http, profileService){
+function ProfileController($log, $q, $http, $rootScope, profileService, residenceService){
   $log.debug('init LoginController');
+
+  this.residences = [];
+
+  this.fetchResidences = function(){
+    residenceService.fetchResidences()
+    .then( residences => {
+      console.log('got residences', residences);
+      this.residences = residences;
+      this.currentResidence = residences[0];
+    });
+  };
 
   this.fetchProfile = function() {
     profileService.fetchProfile()
@@ -19,5 +30,10 @@ function ProfileController($log, $q, $http, profileService){
     });
   };
 
+  this.fetchResidences();
   this.fetchProfile();
+
+  $rootScope.$on('$locationChangeSuccess', () => {
+    this.fetchResidences();
+  });
 }
