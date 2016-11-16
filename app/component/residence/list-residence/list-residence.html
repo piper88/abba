@@ -1,13 +1,14 @@
 
 <div class="list-group">
   <h2> Type: {{ listResidenceCtrl.residence.type }} </h2>
-  <a href="#" ng-repeat="residence in residenceCtrl.residences" class="list-group-item list-group-item-action">
-    <p class="list-group-item-text">{{residence.type}} - {{residence.dateBuilt}}</p>
-    <p class="list-group-item-text">{{residence.sqft}}</p>
-    <p class="list-group-item-text">{{residence.street}} - {{residence.city}}</p>
-    <p class="list-group-item-text">{{residence.state}}, {{residence.zip | uppercase}}.</p>
+  <p class="list-group-item-text">{{ listResidenceCtrl.residence.type }}</p>
+  <p class="list-group-item-text">{{ listResidenceCtrl.residence.sqft }} sqft</p>
+  <p class="list-group-item-text">{{ listResidenceCtrl.residence.street }}</p>
+  <p class="list-group-item-text">{{ listResidenceCtrl.residence.city }}</p>
+  <p class="list-group-item-text">{{ listResidenceCtrl.residence.zip | uppercase }}</p>
+  <p class="list-group-item-text">{{ listResidenceCtrl.residence.state }}</p>
     <!--<p class="list-group-item-text">{{residence.address}}</p>-->
-  </a>
+
 </div>
 
   <!--bedrooms: [{type: mongoose.Schema.Types.ObjectId, ref: 'bedroom'}],-->
