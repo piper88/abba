@@ -13,6 +13,14 @@ describe('testing residence service', function() {
     state: 'WA',
     zip: '98007',
   };
+  let bedroomData = {
+    _id: '777',
+    type: 'Private bedroom',
+    bedSize: 'Queen',
+    bedType: 'Air mattress',
+    sleepNum: 2,
+    privateBath: true,
+  };
 
   beforeEach(() => {
     angular.mock.module(camelcase(__TITLE__));
@@ -106,6 +114,28 @@ describe('testing residence service', function() {
       .then(residences => {
         for(var prop in residences) {
           expect(residences[prop]).toEqual(residenceData[prop]);
+        }
+      });
+      this.$httpBackend.flush();
+    });
+  });
+
+  describe('testing residenceService.createNewBedroom', () => {
+    it('should create a new Bedroom', () => {
+
+      let headers = {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer 1234',
+      };
+
+      this.$httpBackend.expectPOST(`${url}/residence/${residenceData._id}/bedroom`, bedroomData, headers)
+      .respond(200, {_id: '777', type: 'Private bedroom', bedSize: 'Queen', bedType: 'Air mattress', sleepNum: 2, privateBath: true });
+
+      this.residenceService.addNewBedroom(residenceData._id,bedroomData)
+      .then(bedroom => {
+        for (var prop in bedroom) {
+          expect(bedroom[prop]).toEqual(bedroomData[prop]);
         }
       });
       this.$httpBackend.flush();
