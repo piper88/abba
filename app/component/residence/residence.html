@@ -1,13 +1,12 @@
-<main>
-  <nav class="residence-list-container">
-    <input ng-model="residenceCtrl.residenceSearchTerm" type="text" placeholder="Search ... ">
-    <residence> </residence>
-    <ul>
-      <residence-li
-        ng-repeat=" item in residenceCtrl.residences | residence.Search:residenceCtrl.residenceSearchTerm"
-        ng-click="residenceCtrl.currentresidence = item"
-        delete-done="residenceCtrl.residenceDeleteDone(residenceData)"
-        residence="item"> </residence-li>
-    </ul>
-  </nav>
-</main>
+
+<div class="list-group">
+  <a href="#" ng-repeat="residence in residenceCtrl.residences" class="list-group-item list-group-item-action">
+    <p class="list-group-item-text">{{residence.type}} - {{residence.dateBuilt}}</p>
+    <p class="list-group-item-text">{{residence.sqft}}</p>
+    <p class="list-group-item-text">{{residence.street}} - {{residence.city}}</p>
+    <p class="list-group-item-text">{{residence.state}}, {{residence.zip | uppercase}}.</p>
+    <!--<p class="list-group-item-text">{{residence.address}}</p>-->
+  </a>
+</div>
+
+  <!--bedrooms: [{type: mongoose.Schema.Types.ObjectId, ref: 'bedroom'}],-->

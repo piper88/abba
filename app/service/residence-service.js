@@ -12,7 +12,7 @@ function ResidenceService($q, $log, $http, authService){
 
     return authService.getToken()
     .then ( token => {
-      let url = `${__API_URL__}/api/profile`;
+      let url = `${__API_URL__}/api/residence`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -38,7 +38,7 @@ function ResidenceService($q, $log, $http, authService){
     $log.debug('residenceService.getToken()');
     return authService.getToken()
     .then ( token => {
-      let url = `${__API_URL__}/api/profile/residence`;
+      let url = `${__API_URL__}/api/residence`;
       let config = {
         headers: {
           Accept: 'application/json',
@@ -58,39 +58,10 @@ function ResidenceService($q, $log, $http, authService){
     });
   };
 
-  service.updateResidences = function(profileID, residenceID, residenceData){
+  service.deleteResidence = function(residenceID){
     return authService.getToken()
     .then ( token => {
-      let url = `${__API_URL__}/api/profile/${profileID}/residence/${residenceID}`;
-      let config = {
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      };
-      return $http.put(url, config, residenceData);
-    })
-    .then( res => {
-      for (let i=0; i<service.residences.length; ++i){
-        let current = service.residences[i];
-        if (current._id === residenceID){
-          service.residences[i] = res.data;
-          break;
-        }
-      }
-      return res.data;
-    })
-    .catch( err => {
-      $log.error(err.message);
-      return $q.reject(err);
-    });
-  };
-
-  service.deleteResidences = function(profileID, residenceID){
-    return authService.getToken()
-    .then ( token => {
-      let url = `${__API_URL__}/api/profile/${profileID}/residence/${residenceID}`;
+      let url = `${__API_URL__}/api/residence/${residenceID}`;
       let config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -99,7 +70,7 @@ function ResidenceService($q, $log, $http, authService){
       return $http.delete(url, config);
     })
     .then( () => {
-      for (let i=0; i<service.residences.length; ++i){
+      for (let i=0; i< service.residences.length; ++i){
         let current = service.residences[i];
         if (current._id === residenceID){
           service.residences.splice(i, 1);

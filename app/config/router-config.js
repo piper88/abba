@@ -3,15 +3,15 @@
 module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
 
 function routerConfig($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.when('' , 'landing');
-  $urlRouterProvider.when('/' , 'landing');
+  $urlRouterProvider.when('' , '/landing');
+  $urlRouterProvider.when('/' , '/landing');
 
   let states = [
     {
       name: 'landing',
-      url: '/',
+      url: '/landing',
       controllerAs: 'landingCtrl',
-      //controller: 'LandingController',
+      controller: 'LandingController',
       template: require('../view/landing/landing.html'),
     },
     {
