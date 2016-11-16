@@ -1,11 +1,11 @@
 'use strict';
 
-require('./_residence.scss');
+require('./_list-residence.scss');
 
 module.exports = {
-  template: require('./residence.html'),
+  template: require('./list-residence.html'),
   controller: ['$log', '$window', '$rootScope', '$location', 'authService', 'residenceService', ResidenceController],
-  controllerAs: 'residenceCtrl',
+  controllerAs: 'listResidenceCtrl',
 };
 
 function ResidenceController($log, $window, $rootScope, $location, authService, residenceService){
