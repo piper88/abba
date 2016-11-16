@@ -28,6 +28,13 @@ function routerConfig($stateProvider, $urlRouterProvider){
       controller: 'ProfileController',
       template: require('../view/profile/profile.html'),
     },
+    {
+      name: 'residence',
+      url: '/residence',
+      controllerAs: 'residenceCtrl',
+      controller: 'ResidenceController',
+      template: require('../view/residence/residence.html'),
+    },
   ];
 
   states.forEach(state => {
