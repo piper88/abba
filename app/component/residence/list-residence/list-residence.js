@@ -4,14 +4,14 @@ require('./_list-residence.scss');
 
 module.exports = {
   template: require('./list-residence.html'),
-  controller: ['$log', '$window', '$rootScope', '$location', 'authService', 'residenceService', ResidenceController],
+  controller: ['$log', '$window', '$rootScope', '$location', 'authService', 'residenceService', ListResidenceController],
   controllerAs: 'listResidenceCtrl',
   bindings: {
     residence: '<',
   },
 };
 
-function ResidenceController($log, $window, $rootScope, $location, authService, residenceService){
+function ListResidenceController($log, $window, $rootScope, $location, authService, residenceService){
   $log.debug('init residenceCtrl');
 
   this.today = new Date();

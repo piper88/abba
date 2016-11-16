@@ -1,5 +1,7 @@
 
-<form class="form-horizontal">
+<form class="form-horizontal"
+  novalidate
+  ng-submit="newResidenceCtrl.createNewResidence(newResidenceCtrl.residence)">
   <!-- Text input-->
   <!--<div class="form-group">
     <label class="col-md-4 control-label" for="textinput">dateBuilt</label>
@@ -59,5 +61,5 @@
   </div>
 
   <!-- Button -->
-   <button type="submit" class="btn btn-primary" ng-click="newResidenceCtrl.createNewResidence(newResidenceCtrl.residence)">Add Residence</button>
+   <button type="submit" class="btn btn-primary">Add Residence</button>
 </form>
