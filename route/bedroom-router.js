@@ -44,6 +44,18 @@ bedroomRouter.get('/api/residence/:resID/bedroom/:id', bearerAuth, function(req,
   })
   .catch(err => next(createError(404, err.message)));
 });
+ 
+bedroomRouter.get('/api/residence/:resID/bedrooms/', bearerAuth, function(req, res, next) {
+  debug('GET /api/residence/:resID/bedroom/');
+
+  Bedroom.find({residenceID: req.params.resID})
+  .then(bedrooms => {
+    if (bedrooms.userID.toString() !== req.user._id.toString())
+      return next(createError(401, 'invalid userid'));
+    res.json(bedrooms);
+  })
+  .catch(err => next(createError(404, err.message)));
+});
 
 bedroomRouter.put('/api/residence/:resID/bedroom/:id', bearerAuth, jsonParser, function(req, res, next) {
   debug('PUT /api/residence/:resID/bedroom/:bedID');
