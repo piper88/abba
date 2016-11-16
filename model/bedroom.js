@@ -17,6 +17,7 @@ const bedroomSchema = mongoose.Schema({
   bedSize: {type: String, required: true},
   bedType: {type: String, required: true},
   sleepNum: {type: Number, required: true},
+  estimate: {type: String},
   privateBath: {type: Boolean, required: true},
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},
   residenceID: {type: mongoose.Schema.Types.ObjectId, required: true},
