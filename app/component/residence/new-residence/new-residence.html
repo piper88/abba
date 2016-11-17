@@ -86,14 +86,11 @@
   <div class="col-md-7">
     <div class="panel panel-primary">
       <div class="panel-body">
-      <ul class="list-group" ng-repeat="residence in newResidenceCtrl.residences">
-        
-        <!--<button class="btn btn-primary btn-round" ng-click="newResidenceCtrl.getResidence(residence)">New Bedroom </button>-->
-        <!--<h2> Type: {{ residence.type }} </h2>-->
-        <li class="list-group-item clearfix" ng-if="newResidenceCtrl.residences.length">
+      <ul class="list-group" ng-repeat="residence in newResidenceCtrl.residences track by $index">
+        <li class="list-group-item clearfix"> 
             <span class="pull-right">
-                <span class="btn btn-xs btn-primary" uib-tooltip="Add new Bedroom">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Bedroom
+                <span class="btn btn-xs btn-primary" uib-tooltip="New Bedroom" ng-click="newResidenceCtrl.getResidence(residence)">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Bedroom
                 </span>
                 <span class="btn btn-xs btn-danger" uib-tooltip="Remove Residence" ng-click="newResidenceCtrl.deleteResidence(residence._id)">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
@@ -103,11 +100,22 @@
             {{ residence.street }} {{ residence.city }},{{ residence.state }}  {{ residence.zip | uppercase }}
         </li>
       </ul>
+       <ul uib-pagination boundary-links="true" 
+          total-items="newResidenceCtrl.residences.length"
+          ng-model="newResidenceCtrl.currentPage"
+          class="pagination-sm" 
+          previous-text="&lsaquo;"
+          next-text="&rsaquo;" 
+          first-text="&laquo;" 
+          last-text="&raquo;"
+          ng-change="newResidenceCtrl.pageChanged()"
+          max-size="newResidenceCtrl.maxSize">
+      </ul>
     </div>
     </div>
   </div>
 
-  <div class="col-md-12">
+  <div class="col-md-12" >
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="panel-title">
