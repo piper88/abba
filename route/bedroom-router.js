@@ -44,9 +44,9 @@ bedroomRouter.get('/api/residence/:resID/bedroom/:id', bearerAuth, function(req,
   })
   .catch(err => next(createError(404, err.message)));
 });
- 
+
 bedroomRouter.get('/api/residence/:resID/bedrooms/', bearerAuth, function(req, res, next) {
-  debug('GET /api/residence/:resID/bedroom/');
+  debug('GET /api/residence/:resID/bedrooms/');
 
   Bedroom.find({residenceID: req.params.resID})
   .then(bedrooms => {
