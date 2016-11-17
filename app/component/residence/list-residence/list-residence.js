@@ -16,8 +16,14 @@ function ListResidenceController($log, $uibModal){
 
   this.openPopupModal = function() {
     $uibModal.open({
-      template: '<bedroom-modal></bedroom-modal>',
+      // template: '<bedroom-modal></bedroom-modal>',
+      component:'bedroomModal',
+      resolve: {
+        residence: () => {
+          return this.residence;
+        },
+      },
     });
   };
-  
+
 }
