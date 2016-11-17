@@ -6,9 +6,9 @@
     <div class="row">
       <a class="btn btn-primary btn-round" href="#/residence">New Residence</a>
     </div>
-
-    <list-residence ng-repeat="item in profileCtrl.residences"
-      residence="item">
-    </list-residence>
+        <input ng-model="profileCtrl.residenceSearchTerm" type="text" placeholder="Search">
+        <list-residence ng-repeat="item in profileCtrl.residences"
+          residence="item">
+        </list-residence>
   </div>
 </div>
