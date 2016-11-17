@@ -15,8 +15,8 @@ AWS.config.setPromisesDependency(require('bluebird'));
 const bedroomSchema = mongoose.Schema({
   type: {type: String, required: true },
   bedSize: {type: String, required: true},
-  bedType: {type: String, required: true},
-  sleepNum: {type: Number, required: true},
+  bedType: {type: String},
+  sleepNum: {type: Number},
   estimate: {type: String},
   privateBath: {type: Boolean, required: true},
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},

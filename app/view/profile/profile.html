@@ -9,6 +9,7 @@
 
     <!--<nav class="residence-list-container">
       <ul>-->
+        <input ng-model="profileCtrl.residenceSearchTerm" type="text" placeholder="Search">
         <list-residence ng-repeat="item in profileCtrl.residences"
           residence="item">
         </list-residence>
