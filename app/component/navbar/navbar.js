@@ -16,25 +16,35 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
 
   function pageLoadHandler() {
     // if there is allready a token go the home page
-
+    console.log('pageLoadHandler is running');
     let path = $location.path();
-    if (path === '/landing') {
-      this.hideLogout = true;
-      this.hideLogin = false;
-    }
 
     if (path !== '/landing') {
       this.hideLogout = false;
       this.hideLogin = true;
     }
 
+    if (path === '/landing' ) {
+      this.hideLogout = true;
+      this.hideLogin = false;
+    }
+
+    if (path === '/login'){
+      this.hideLogout = true;
+      this.hideLogin = true;
+    }
+
+
     authService.getToken()
       .then(() => {
-        $location.url('/profile');
+        if(path === '/landing' || path === '/login'){
+          $location.url('/profile');
+        }
         this.hideLogin = true;
         this.hideLogout = false;
       })
       .catch(() => {
+        console.log('lulwat');
         let query = $location.search();
         if (query.token) {
           return authService.setToken(query.token)
@@ -44,12 +54,16 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
               this.hideLogout = false;
             });
         }
-        $location.url('/landing');
+        if (path !== '/login' ){
+          $location.url('/landing');
+        }
       });
   }
 
   $window.onload = pageLoadHandler.bind(this);
-  $rootScope.$on('locationChangeSuccess', pageLoadHandler.bind(this));
+  $rootScope.$on('$stateChangeStart', pageLoadHandler.bind(this));
+
+  // pageLoadHandler.call(this);
 
 //do we need to call authService.login()?
   this.login = function() {
