@@ -1,82 +1,122 @@
-
-<div class="row">
-  <form class="form-horizontal col-md-6"
-    novalidate
-    ng-submit="newResidenceCtrl.createNewResidence(newResidenceCtrl.residence)">
-    <!-- Text input-->
-    <!--<div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">dateBuilt</label>
-      <div class="col-md-4">
-        <input id="dateBuilt" name="dateBuilt" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.dateBuilt">
+<div>
+  <div class="col-md-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">
+          New Residence
+        </div>
       </div>
-    </div>-->
+      <div class="panel-body">
+          <form class="form-horizontal"
+          novalidate
+          ng-submit="newResidenceCtrl.createNewResidence(newResidenceCtrl.residence)">
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Type</label>
+            <div class="col-md-8">
+              <select class="form-control" name="type" class="form-control" id="type" ng-model="newResidenceCtrl.residence.type" required>    
+                <option ng-selected="true" ng-value="House">House</option>
+                <option ng-value="Apartment">Apartment</option>      
+                <option ng-value="Condo">Condo</option>    
+              </select>   
+            </div>
+          </div>
 
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">type</label>
-      <div class="col-md-4">
-        <input id="type" name="type"  class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.type" required>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Sqft</label>
+            <div class="col-md-8">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                  <input id="sqft" name="sqft" class="form-control" type="text" ng-model="newResidenceCtrl.residence.sqft" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">Street</label>
+            <div class="col-md-8">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                <input id="street" name="street" class="form-control" type="text" ng-model="newResidenceCtrl.residence.street" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">City</label>  
+              <div class="col-md-8">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                  <input id="city" name="city" class="form-control" type="text" ng-model="newResidenceCtrl.residence.city" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group"> 
+          <label class="col-md-4 control-label">State</label>
+            <div class="col-md-8 selectContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                  <select class="form-control" ng-model="newResidenceCtrl.residence.state" required >
+                    <option ng-repeat="item in newResidenceCtrl.states" value="{{item}}">{{item}}</option>
+                  </select>
+              </div>
+            </div>
+          </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">Zip Code</label>  
+              <div class="col-md-8">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                  <input id="zip" name="zip" class="form-control" type="text" ng-model="newResidenceCtrl.residence.zip" required>
+              </div>
+          </div>
+        </div>
+            <button type="submit" class="btn btn-primary pull-right">Add Residence</button>
+        </form>
       </div>
+  </div>
+  </div>
+
+  <div class="col-md-7">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+      <ul class="list-group" ng-repeat="residence in newResidenceCtrl.residences">
+        
+        <!--<button class="btn btn-primary btn-round" ng-click="newResidenceCtrl.getResidence(residence)">New Bedroom </button>-->
+        <!--<h2> Type: {{ residence.type }} </h2>-->
+        <li class="list-group-item clearfix" ng-if="newResidenceCtrl.residences.length">
+            <span class="pull-right">
+                <span class="btn btn-xs btn-primary" uib-tooltip="Add new Bedroom">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Bedroom
+                </span>
+                <span class="btn btn-xs btn-danger" uib-tooltip="Remove Residence" ng-click="newResidenceCtrl.deleteResidence(residence._id)">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </span>
+            </span> 
+            {{ residence.type }} - {{ residence.sqft }} Sqft <br/>
+            {{ residence.street }} {{ residence.city }},{{ residence.state }}  {{ residence.zip | uppercase }}
+        </li>
+      </ul>
     </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">sqft</label>
-      <div class="col-md-4">
-      <input id="sqft" name="sqft" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.sqft" required>
-      </div>
-    </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">street</label>
-      <div class="col-md-4">
-      <input id="street" name="street" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.street" required>
-      </div>
-    </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">city</label>
-      <div class="col-md-4">
-      <input id="city" name="city" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.city" required>
-      </div>
-    </div>
-
-
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">zip</label>
-      <div class="col-md-4">
-      <input id="zip" name="zip" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.zip" required>
-      </div>
-    </div>
-
-
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">state</label>
-      <div class="col-md-4">
-      <input id="state" name="textinput" class="form-control input-md" type="text" ng-model="newResidenceCtrl.residence.state" required>
-      </div>
-    </div>
-
-    <!-- Button -->
-    <button type="submit" class="btn btn-primary">Add Residence</button>
-  </form>
-  <div class="col-md-3">
-    <div class="list-group" ng-repeat="residence in newResidenceCtrl.newResidences">
-      <button class="btn btn-primary btn-round" ng-click="newResidenceCtrl.getResidence(residence)">New Bedroom </button>
-      <h2> Type: {{ residence.type }} </h2>
-      <p class="list-group-item-text">{{ residence.type }}</p>
-      <p class="list-group-item-text">{{ residence.sqft }} sqft</p>
-      <p class="list-group-item-text">{{ residence.street }}</p>
-      <p class="list-group-item-text">{{ residence.city }}</p>
-      <p class="list-group-item-text">{{ residence.zip | uppercase }}</p>
-      <p class="list-group-item-text">{{ residence.state }}</p>
     </div>
   </div>
-  <div class="col-md-12">{{newResidenceCtrl.currentResidence}}
-    <new-bedroom residence-data="newResidenceCtrl.currentResidence"></new-bedroom>
+
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+          New Bedroom
+        </div>
+      </div>
+      <div class="panel-body">
+        <new-bedroom residence-data="newResidenceCtrl.currentResidence"></new-bedroom>
+      </div>
+    </div>
   </div>
 </div>
