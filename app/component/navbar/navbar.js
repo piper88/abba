@@ -20,6 +20,7 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
     let path = $location.path();
     if (path === '/landing') {
       this.hideLogout = true;
+      this.hideLogin = false;
     }
 
     if (path !== '/landing') {
@@ -30,6 +31,8 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
     authService.getToken()
       .then(() => {
         $location.url('/profile');
+        this.hideLogin = true;
+        this.hideLogout = false;
       })
       .catch(() => {
         let query = $location.search();
@@ -37,6 +40,8 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
           return authService.setToken(query.token)
             .then(() => {
               $location.url('/profile');
+              this.hideLogin = true;
+              this.hideLogout = false;
             });
         }
         $location.url('/landing');
@@ -49,7 +54,7 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
 //do we need to call authService.login()?
   this.login = function() {
     this.hideLogout = true;
-    this.hideLogin = false;
+    this.hideLogin = true;
 
     $location.url('/login');
   };
@@ -57,6 +62,7 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
   this.logout = function() {
     $log.log('navbarCtrl.logout()');
     this.hideLogout = true;
+    this.hideLogin = false;
     authService.logout()
       .then(() => {
         $location.url('/');
