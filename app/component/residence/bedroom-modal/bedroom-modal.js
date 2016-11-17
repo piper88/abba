@@ -4,29 +4,17 @@ require('./_bedroom-modal.scss');
 
 module.exports = {
   template: require('./bedroom-modal.html'),
-  controller: ['$log', '$uibModal', BedroomModalController],
+  controller: ['$log', BedroomModalController],
   controllerAs: 'bedroomModalCtrl',
+  bindings: {
+    modalInstance: '<',
+    resolve: '<',
+  },
 };
 
-function BedroomModalController($log, $uibModal){
+function BedroomModalController($log){
   $log.debug('init BedroomModalController');
-
-  this.items = ['item1', 'item2', 'item3'];
-  this.open = function() {
-    var uibModalInstance = $uibModal.open({
-      templateUrl: 'bedroom-modal.html',
-      controller: 'modalCtrl',
-      size: 'sm',
-      resolve: {
-        items: function () {
-          return this.items;
-        },
-      },
-    });
-    uibModalInstance.result.then(function (selectedItem) {
-      this.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
+  this.$onInit = function(){
+    this.residence = this.resolve.residence;
   };
 }
