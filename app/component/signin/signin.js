@@ -18,6 +18,7 @@ function SigninController($log, $location, authService) {
       $location.path('/profile');
     })
     .catch(() => {
+      this.errorMessage = true;
       console.log('failed to signin');
     });
   };
