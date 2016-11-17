@@ -4,19 +4,30 @@ require('./_list-residence.scss');
 
 module.exports = {
   template: require('./list-residence.html'),
-  controller: ['$log','$uibModal','residenceService', ListResidenceController],
+  controller: ['$log', '$window', '$uibModal','residenceService', ListResidenceController],
   controllerAs: 'listResidenceCtrl',
   bindings: {
     residence: '<',
   },
 };
 
-function ListResidenceController($log, $uibModal, residenceService){
+function ListResidenceController($log, $window, $uibModal, residenceService){
   $log.debug('init residenceCtrl');
 
   this.openPopupModal = function() {
     $uibModal.open({
       component:'bedroomModal',
+      resolve: {
+        residence: () => {
+          return this.residence;
+        },
+      },
+    });
+  };
+
+  this.openPopupModalRemoveResidence = function() {
+    $uibModal.open({
+      component:'removeResidenceModal',
       resolve: {
         residence: () => {
           return this.residence;
@@ -36,12 +47,14 @@ function ListResidenceController($log, $uibModal, residenceService){
   };
 
   this.deleteResidence = function(residenceID) {
-    residenceService.deleteResidence(residenceID)
-    .then(()=> {
-      $log.debug('removed residence');
-    })
-    .catch(() => {
-      $log.debug('can not remove');
-    });
+    if($window.confirm('Are you sure you want to delete this?')){
+      residenceService.deleteResidence(residenceID)
+      .then(()=> {
+        $log.debug('removed residence');
+      })
+      .catch(() => {
+        $log.debug('can not remove');
+      });
+    }
   };
 }
