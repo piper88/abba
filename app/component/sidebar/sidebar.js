@@ -8,6 +8,7 @@ module.exports = {
   controllerAs: 'sidebarCtrl',
   bindings: {
     profile: '=',
+    residenceCount: '<',
   },
 };
 
