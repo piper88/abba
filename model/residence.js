@@ -52,9 +52,11 @@ Residence.findByIdAndRemoveResidence = function(residenceID) {
     let removeChildren = [];
     residence.bedrooms.forEach(bed => {
       removeChildren.push(Estimate.remove({bedID: bed._id}));
-      bed.photoArray.forEach( photoId => {
-        removeChildren.push(Photo.remove({_id: photoId}));
-      });
+      if(bed.photoArray){
+        bed.photoArray.forEach( photoId => {
+          removeChildren.push(Photo.remove({_id: photoId}));
+        });
+      }
     });
     return Promise.all(removeChildren);
   })

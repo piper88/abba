@@ -1,14 +1,27 @@
-<div class="row">
+<div class="col-md-12">
+  <br/>
   <div class="col-md-3">
     <sidebar profile="profileCtrl.profile"></sidebar>
   </div>
   <div class="col-md-9">
-    <div class="row">
-      <a class="btn btn-primary btn-round" href="#/residence">New Residence</a>
+
+    <!-- <div class="form-input">
+      <input class="form-control" ng-model="profileCtrl.residenceSearchTerm" type="text" placeholder="Search...">
+    </div> -->
+    <br/>
+
+    <div class="text-right">
+      <a class="btn btn-primary btn-round" href="#/residence">
+        <span class="glyphicon glyphicon-plus-sign"></span> New Residence
+      </a>
     </div>
-        <input ng-model="profileCtrl.residenceSearchTerm" type="text" placeholder="Search">
-        <list-residence ng-repeat="item in profileCtrl.residences"
-          residence="item">
-        </list-residence>
+    <br/>
+    <div class="well text-center well-round" ng-if="!profileCtrl.residences.length">
+      There is no Residence
+    </div>
+
+    <list-residence ng-repeat="item in profileCtrl.residences"
+      residence="item">
+    </list-residence>
   </div>
 </div>
