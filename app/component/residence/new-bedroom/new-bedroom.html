@@ -3,45 +3,40 @@
     ng-submit="newBedroomCtrl.createNewBed()">
 
     <!-- Text input-->
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">type</label>
       <div class="col-md-4">
         <input id="type" name="type"  class="form-control input-md" type="text" ng-model="newBedroomCtrl.bedroom.type" required>
       </div>
-    </div>
-
-    <!-- Text input-->
+    </div> -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">sqft</label>
-      <div class="col-md-4">
-      <input id="sqft" name="sqft" class="form-control input-md" type="text" ng-model="newBedroomCtrl.bedroom.bedSize" required>
-      </div>
+      <label for="exampleSelect1">Bedroom Type</label>
+      <select class="form-control" id="exampleSelect1" ng-model="newBedroomCtrl.bedroom.type" required>
+        <option ng-selected="true">Choose Bedroom Type</option>
+        <option>Master</option>
+        <option>Regular</option>
+      </select>
     </div>
 
-    <!-- Text input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">street</label>
-      <div class="col-md-4">
-      <input id="street" name="street" class="form-control input-md" type="text" ng-model="newBedroomCtrl.bedroom.bedType" required>
-      </div>
+      <label for="exampleSelect1">Bed Size</label>
+      <select class="form-control" ng-model="newBedroomCtrl.bedroom.bedSize" required>
+        <option ng-selected="true">Choose Bed Size</option>
+        <option>King</option>
+        <option>Queen</option>
+        <option>Double</option>
+      </select>
     </div>
 
-    <!-- Text input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">city</label>
-      <div class="col-md-4">
-      <input id="city" name="city" class="form-control input-md" type="text" ng-model="newBedroomCtrl.bedroom.sleepNum" required>
-      </div>
+      <label for="exampleSelect1">Private Bathroom</label>
+      <select class="form-control" ng-model="newBedroomCtrl.bedroom.privateBath" required>
+        <option ng-selected="true">Has Private Bathroom?</option>
+        <option>True</option>
+        <option>False</option>
+      </select>
     </div>
 
-
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">zip</label>
-      <div class="col-md-4">
-      <input id="zip" name="zip" class="form-control input-md" type="text" ng-model="newBedroomCtrl.bedroom.privateBath" required>
-      </div>
-    </div>
 
     <!-- Button -->
     <button type="submit" class="btn btn-primary">Add Bedroom</button>
