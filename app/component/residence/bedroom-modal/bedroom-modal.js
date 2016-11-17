@@ -17,4 +17,9 @@ function BedroomModalController($log){
   this.$onInit = function(){
     this.residence = this.resolve.residence;
   };
+
+  this.cancel = function(){
+    console.log('closing modal');
+    this.modalInstance.close();
+  };
 }

@@ -8,6 +8,7 @@ module.exports = {
   controllerAs: 'newBedroomCtrl',
   bindings: {
     residenceData: '<',
+    closeModal: '&',
   },
 };
 
@@ -23,6 +24,7 @@ function NewBedroomController($log, $http, residenceService ){
     .then(bedroom => {
       this.newBed = bedroom;
       console.log('bedroom', bedroom);
+      this.closeModal();
     });
   };
 

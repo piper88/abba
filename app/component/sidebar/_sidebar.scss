@@ -7,17 +7,27 @@ Licensed under MIT
 body {
   // background: #F1F3FA;
   background: rgba(224, 224, 224, 0.51);
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* Profile container */
 .profile {
   margin: 20px 0;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
   background: #fff;
+  height: 100%;
+  min-height: 100%;
 }
 
 .profile-userpic img {
