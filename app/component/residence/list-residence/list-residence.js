@@ -4,36 +4,20 @@ require('./_list-residence.scss');
 
 module.exports = {
   template: require('./list-residence.html'),
-  controller: ['$log', ListResidenceController],
+  controller: ['$log','$uibModal', ListResidenceController],
   controllerAs: 'listResidenceCtrl',
   bindings: {
     residence: '<',
   },
 };
 
-function ListResidenceController($log){
+function ListResidenceController($log, $uibModal){
   $log.debug('init residenceCtrl');
 
-  // this.today = new Date();
-  // // this.residences = [];
-  //
-  // this.fetchResidences = function(){
-  //   residenceService.fetchResidences()
-  //  .then( residences => {
-  //    this.residences.push(residences);
-  //    this.currentResidence = residences[0];
-  //  });
-  // };
-
-  // this.residenceDeleteDone = function(residence){
-  //   $log.debug('residenceCtrl.residenceDeleteDone()');
-  //   if (this.currentResidence._id === residence._id){
-  //     this.currentResidence = null;
-  //   }
-  // };
-
-  // this.fetchResidences();
-  // $rootScope.$on('$locationChangeSuccess', () => {
-  //   this.fetchResidences();
-  // });
+  this.openPopupModal = function() {
+    $uibModal.open({
+      template: '<bedroom-modal></bedroom-modal>',
+    });
+  };
+  
 }
