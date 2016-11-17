@@ -41,11 +41,19 @@
 							<a href="javascript:void(0)">
 							<i class="glyphicon glyphicon-envelope"></i>
 							{{sidebarCtrl.profile.email}}
+							</a>
 						</li>
 						<li>
 							<a href="javascript:void(0)">
-							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
+								<h6><i class="glyphicon glyphicon-star-empty"></i>
+									Number of Residence
+									<label class="label label-warning"> {{sidebarCtrl.residenceCount.length}}</label>
+								</h6>
+								<h6><i class="glyphicon glyphicon-star-empty"></i>
+									Number of Bedroom
+									<!-- <label class="label label-warning"> {{sidebarCtrl.residenceCount[0].bedrooms.length}}</label> -->
+								</h6>
+						  </a>
 						</li>
 					</ul>
 				</div>
