@@ -15,8 +15,6 @@ module.exports = {
 function BedroomModalController($log){
   $log.debug('init BedroomModalController');
   this.$onInit = function(){
-    console.log('lulwat');
     this.residence = this.resolve.residence;
-    console.log('lulwat', this.residence);
   };
 }
