@@ -63,9 +63,6 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
   $window.onload = pageLoadHandler.bind(this);
   $rootScope.$on('$stateChangeStart', pageLoadHandler.bind(this));
 
-  // pageLoadHandler.call(this);
-
-//do we need to call authService.login()?
   this.login = function() {
     this.hideLogout = true;
     this.hideLogin = true;
