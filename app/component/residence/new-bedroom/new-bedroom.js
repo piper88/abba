@@ -35,6 +35,7 @@ function NewBedroomController($log, $http, residenceService, picService){
     picService.uploadBedroomPhoto(this.newBed, this.pic)
     .then(dataPic => {
       this.bedroom.photo = dataPic._id;
+      this.bedroom.imageURI = dataPic.imageURI;
       this.pic = null;
       console.log(this.bedroom);
     });
