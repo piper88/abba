@@ -9,11 +9,13 @@ module.exports = {
   bindings: {
     residenceData: '<',
     closeModal: '&',
+    modalInstance: '<',
   },
 };
 
 function NewBedroomController($log, $http, residenceService, picService){
   $log.debug('init newBedroomCtrl');
+  $log.debug('ZIS IS ZEE MODAL', this.modalInstance);
 
   this.createNewBed = function(){
     $log.debug('init createNewBedroom()');
@@ -33,6 +35,9 @@ function NewBedroomController($log, $http, residenceService, picService){
       this.bedroom.photo = dataPic;
       this.bedroom.imageURI = dataPic.imageURI;
       this.pic = null;
+      this.closeModal();
+      // this.modalInstance.close();
+      console.log('ARE WE HEREEEEEEEEEEEE');
     });
   };
 
