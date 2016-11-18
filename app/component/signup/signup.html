@@ -1,5 +1,5 @@
 
-<form novalidate ng-submit="signupCtrl.signup()">
+<form name="signupForm" novalidate ng-submit="signupCtrl.signup()">
 	<div class="login-or">
 			<hr class="hr-or">
 			<span class="span-or">or</span>
@@ -7,37 +7,39 @@
 	<hr class="colorgraph">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6">
-			<div class="form-group">
-					<input type="text" name="first_name" id="first_name" class="form-control input-lg" ng-model="signupCtrl.profile.firstName" placeholder="First Name" tabindex="1">
+			<div class="form-group" ng-class="{ 'has-error' : signupForm.firstName.$invalid && !signupForm.firstName.$pristine }">
+					<input type="text" name="firstName" id="firstName" class="form-control input-lg" ng-model="signupCtrl.user.firstName" placeholder="First Name" tabindex="1" required>
+					<p ng-show="signupForm.firstName.$invalid && !signupForm.firstName.$pristine" class="help-block">You first name is required.</p>
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
-			<div class="form-group">
-				<input type="text" name="last_name" id="last_name" class="form-control input-lg" ng-model="signupCtrl.profile.lastName" placeholder="Last Name" tabindex="2">
+			<div class="form-group" ng-class="{ 'has-error' : signupForm.lastName.$invalid && !signupForm.lastName.$pristine }">
+				<input type="text" name="lastName" id="lastName" class="form-control input-lg" ng-model="signupCtrl.profile.lastName" placeholder="Last Name" tabindex="2" required>
+				<p ng-show="signupForm.lastName.$invalid && !signupForm.lastName.$pristine" class="help-block">Your last name is required.</p>
 			</div>
 		</div>
 	</div>
-	<div class="form-group">
-		<input type="text" name="phone" id="phone" class="form-control input-lg" ng-model="signupCtrl.profile.phone" placeholder="Phone Number" tabindex="3">
+	<div class="form-group" ng-class="{ 'has-error' : signupForm.phone.$invalid && !signupForm.phone.$pristine }">
+		<input type="text" name="phone" id="phone" class="form-control input-lg" ng-model="signupCtrl.profile.phone" placeholder="Phone Number" tabindex="3" required>
+		<p ng-show="signupForm.phone.$invalid && !signupForm.phone.$pristine" class="help-block">Your phone number is required</p>
 	</div>
-	<div class="form-group">
-		<input type="email" name="email" id="email" 
-			class="form-control input-lg" 
-			ng-model="signupCtrl.user.email" 
-			ng-class="{ 'has-error': loginForm.email.$invalid }" placeholder="Email Address" tabindex="4" required>
+	<div class="form-group" ng-class="{ 'has-error' : signupForm.email.$invalid && !signupForm.email.$pristine }">
+		<input type="email" name="email" id="email" class="form-control input-lg" ng-model="signupCtrl.user.email" placeholder="Email Address" tabindex="4" required>
+	  <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="help-block">Your email address is required</p>
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6">
-			<div class="form-group">
-				<input type="password" name="password" id="password" class="form-control input-lg" ng-model="signupCtrl.user.password" placeholder="Password" tabindex="5" required>
+			<div class="form-group" ng-class="{ 'has-error' : signupForm.password.$invalid && !signupForm.password.$pristine }">
+				<input type="password" name="password" id="password" class="form-control input-lg" ng-model="signinCtrl.user.password" placeholder="Password" tabindex="5" required>
+			  <p ng-show="signupForm.password.$invalid && !signupForm.password.$pristine" class="help-block">Please enter your password</p>
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6">
 			<div class="form-group">
-				<input type="password" name="password_confirmation" 
-				id="password_confirmation" 
-				class="form-control input-lg" 
-				placeholder="Confirm Password" 
+				<input type="password" name="password_confirmation"
+				id="password_confirmation"
+				class="form-control input-lg"
+				placeholder="Confirm Password"
 				tabindex="6"
 				required>
 			</div>
@@ -49,15 +51,17 @@
 					<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
 			</span>
 		</div>
-		<!--<div class="col-xs-8 col-sm-9 col-md-9">
+		<!-- <div class="col-xs-8 col-sm-9 col-md-9">
 				By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
-		</div>-->
+		</div> -->
 	</div>
 
 	<hr class="colorgraph">
 	<div class="row">
 		<div class="col-xs-12 col-md-12">
-			<input type="submit" value="Register it" class="btn btn-primary btn-block btn-lg" tabindex="7">
-			</div>
+			<input type="submit" value="Register it" class="btn btn-primary btn-block btn-lg" tabindex="7" ng-disabled="loginForm.$invalid">
+		</div>
 	</div>
+
+	<p ng-show="signupCtrl.errorMessage" class="pull-right help-block" ng-class="{ 'text-danger': signupCtrl.errorMessage }">Your email / password is invalid</p>
 </form>
