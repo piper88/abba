@@ -4,7 +4,7 @@ require('./_new-bedroom.scss');
 
 module.exports = {
   template: require('./new-bedroom.html'),
-  controller: ['$log','$http', 'residenceService', NewBedroomController],
+  controller: ['$log','$http', 'residenceService', 'picService', NewBedroomController],
   controllerAs: 'newBedroomCtrl',
   bindings: {
     residenceData: '<',
@@ -12,10 +12,9 @@ module.exports = {
   },
 };
 
-function NewBedroomController($log, $http, residenceService ){
+function NewBedroomController($log, $http, residenceService, picService){
   $log.debug('init newBedroomCtrl');
 
-  this.bedroom = {};
   this.createNewBed = function(){
     $log.debug('init createNewBedroom()');
     this.bedroom.estimate = this.createEstimate(this.bedroom);
@@ -24,9 +23,24 @@ function NewBedroomController($log, $http, residenceService ){
     .then(bedroom => {
       this.newBed = bedroom;
       console.log('bedroom', bedroom);
-      this.closeModal();
+      // this.closeModal();
     });
   };
+
+  this.pic = {};
+
+  this.uploadBedroomPhoto = function(){
+    $log.debug('init uploadBedroomPhoto');
+    console.log(this.pic, 'THIS.PIC');
+    // this.pic = {};
+    picService.uploadBedroomPhoto(this.newBed, this.pic)
+    .then(() => {
+      this.bedroom.photo = this.pic;
+      this.pic = null;
+    });
+  };
+
+  this.bedroom = {};
 
   this.createEstimate = function(bedroom){
     let estimate = 0;

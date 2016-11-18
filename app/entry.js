@@ -16,9 +16,10 @@ const ngTouch = require('angular-touch');
 const ngAnimate = require('angular-animate');
 const uiRouter = require('angular-ui-router');
 const uiBootstrap = require('angular-ui-bootstrap');
+const ngFileUpload = require('ng-file-upload');
 
 // create angular module
-const app = angular.module(camelcase(__TITLE__), [ngTouch, ngAnimate, uiRouter, uiBootstrap]);
+const app = angular.module(camelcase(__TITLE__), [ngTouch, ngAnimate, uiRouter, uiBootstrap, ngFileUpload]);
 
 // set up $rootScope globals
 app.run(['$rootScope', function($rootScope){
