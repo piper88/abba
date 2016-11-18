@@ -4,11 +4,11 @@ require('./_new-residence.scss');
 
 module.exports = {
   template: require('./new-residence.html'),
-  controller: ['$log', '$window', '$rootScope', '$location', 'authService', 'residenceService', NewResidenceController],
+  controller: ['$log', '$window', '$rootScope', '$location', 'authService', 'residenceService','$uibModal', NewResidenceController],
   controllerAs: 'newResidenceCtrl',
 };
 
-function NewResidenceController($log, $window, $rootScope, $location, authService, residenceService){
+function NewResidenceController($log, $window, $rootScope, $location, authService, residenceService, $uibModal){
   $log.debug('init residenceCtrl');
 
 
@@ -22,7 +22,7 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
   //   index = $scope.filteredRT.indexOf(value);
   //   return (begin <= index && index < end);
   // };
-
+  this.residence = {};
   this.residences = [];
   this.states = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
 
@@ -62,9 +62,19 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
     });
   };
 
+  this.openPopupModalAddBedroom = function() {
+    $uibModal.open({
+      component:'bedroomModal',
+      resolve: {
+        residence: () => {
+          return this.currentResidence;
+        },
+      },
+    });
+  };
+
   this.fetchResidences();
   this.currentPage = 1;
   this.itemsPerPage = 4;
   
-  // this.totalItems = this.residences.length; 
 }
