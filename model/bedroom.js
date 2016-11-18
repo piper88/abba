@@ -22,6 +22,7 @@ const bedroomSchema = mongoose.Schema({
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},
   residenceID: {type: mongoose.Schema.Types.ObjectId, required: true},
   photo: {type: mongoose.Schema.Types.ObjectId, ref: 'photos'},
+  imageURI: {type: String},
   estimateID: {type: mongoose.Schema.Types.ObjectId},
 });
 
