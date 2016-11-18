@@ -10,8 +10,6 @@ function routerConfig($stateProvider, $urlRouterProvider){
     {
       name: 'landing',
       url: '/landing',
-      controllerAs: 'landingCtrl',
-      controller: 'LandingController',
       template: require('../view/landing/landing.html'),
     },
     {
@@ -34,6 +32,16 @@ function routerConfig($stateProvider, $urlRouterProvider){
       controllerAs: 'residenceCtrl',
       controller: 'ResidenceController',
       template: require('../view/residence/residence.html'),
+    },
+    {
+      name: 'about',
+      url: '/about',
+      template: require('../view/about/about.html'),
+    },
+    {
+      name: 'contact',
+      url: '/contact',
+      template: require('../view/contact/contact.html'),
     },
   ];
 
