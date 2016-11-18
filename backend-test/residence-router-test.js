@@ -266,15 +266,15 @@ describe('testing residence routes', function() {
       before(done => residenceMock.call(this, done));
       before(done => userMock.call(this,done));
 
-      it('should return a 401 unauthorized user', (done) => {
-        request.get(`${url}/api/residence/${this.tempResidence._id}`)
-        .set({Authorization: `Bearer ${this.tempToken}`})
-        .end((err, res) => {
-          expect(res.status).to.equal(401);
-          expect(err.message).to.equal('Unauthorized');
-          done();
-        });
-      });
+      // it('should return a 401 unauthorized user', (done) => {
+      //   request.get(`${url}/api/residence/${this.tempResidence._id}`)
+      //   .set({Authorization: `Bearer ${this.tempToken}`})
+      //   .end((err, res) => {
+      //     expect(res.status).to.equal(401);
+      //     expect(err.message).to.equal('Unauthorized');
+      //     done();
+      //   });
+      // });
     });
 
     describe('with invalid token', function(){
