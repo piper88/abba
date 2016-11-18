@@ -11,10 +11,8 @@ const Schema = mongoose.Schema;
 
 const userSchema = Schema({
   email: {type: String, required: true, unique: true},
-  password: {type: String, required: true},
+  password: {type: String},
   findHash: {type: String, unique: true},
-  // profileID: {type: mongoose.Schema.Types.ObjectId, required: true},
-  // profile: TBD
 });
 
 userSchema.methods.generatePasswordHash = function(password){

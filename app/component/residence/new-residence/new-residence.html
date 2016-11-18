@@ -15,7 +15,8 @@
             <label class="col-md-4 control-label" for="textinput">Type</label>
             <div class="col-md-8">
               <select class="form-control" name="type" class="form-control" id="type" ng-model="newResidenceCtrl.residence.type" required>
-                <option ng-selected="true" ng-value="House">House</option>
+                <option ng-selected="true"></option>
+                <option ng-value="House">House</option>
                 <option ng-value="Apartment">Apartment</option>
                 <option ng-value="Condo">Condo</option>
               </select>
@@ -96,8 +97,8 @@
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 </span>
             </span>
-            {{ residence.type }} - {{ residence.sqft }} Sqft <br/>
-            {{ residence.street }} {{ residence.city }},{{ residence.state }}  {{ residence.zip | uppercase }}
+            {{ residence.type }} - {{ residence.sqft }} sqft <br/>
+            {{ residence.street }} {{ residence.city }}, {{ residence.state }}  {{ residence.zip | uppercase }}
         </a>
       </ul>
        <div class="well text-center well-round" ng-if="!newResidenceCtrl.residences.length">

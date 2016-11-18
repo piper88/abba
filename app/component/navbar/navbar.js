@@ -47,8 +47,10 @@ function NavbarController($log, $location, $rootScope, $window, authService) {
         console.log('lulwat');
         let query = $location.search();
         if (query.token) {
+          console.log('BEFOREEEEEEEEE', query);
           return authService.setToken(query.token)
             .then(() => {
+              console.log('lulwatasdfasdfasdfasdfasdf');
               $location.url('/profile');
               this.hideLogin = true;
               this.hideLogout = false;

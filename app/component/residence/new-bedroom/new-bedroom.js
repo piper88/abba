@@ -19,11 +19,13 @@ function NewBedroomController($log, $http, residenceService, picService, $timeou
   this.createNewBed = function(){
     $log.debug('init createNewBedroom()');
     this.bedroom.estimate = this.createEstimate(this.bedroom);
-    console.log('dsfsdfafasFasf',this.residenceData);
     residenceService.addNewBedroom(this.residenceData._id, this.bedroom)
     .then(bedroom => {
       this.newBed = bedroom;
+<<<<<<< HEAD
       this.showAlert = true;
+=======
+>>>>>>> 08e9fe45e284784f5138e18be890df32be24ae3d
     });
   };
 
@@ -31,13 +33,11 @@ function NewBedroomController($log, $http, residenceService, picService, $timeou
 
   this.uploadBedroomPhoto = function(){
     $log.debug('init uploadBedroomPhoto');
-    console.log(this.pic, 'THIS.PIC');
     picService.uploadBedroomPhoto(this.newBed, this.pic)
     .then(dataPic => {
       this.bedroom.photo = dataPic;
       this.bedroom.imageURI = dataPic.imageURI;
       this.pic = null;
-      console.log('this.bedroom!!!!!!!!!!!!!', this.bedroom);
     });
   };
 

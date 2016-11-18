@@ -64,13 +64,17 @@ authRouter.get('/api/auth/oauth_abba_callback', googleOAUTH, function(req, res) 
           accessToken: req.googleOAUTH.accessToken,
         },
       };
+      console.log('userData', userData);
       return new User(userData).save();
     }
     return Promise.reject(err);
   })
-  .then(user => user.generateToken())
+  .then(user => {
+    console.log('badfogkljsadfkjasdfilua;dsfsadfasdfasdf', user);
+    return user.generateToken();
+  })
   .then(token => {
-    res.redirect(`/#/profile/?token=${token}`);
+    res.redirect(`/#/login/?token=${token}`);
     console.log('token ------>' , token);
     //res.redirect('/#/profile');
     return token;

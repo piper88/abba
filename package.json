@@ -13,6 +13,7 @@
     "test-watch": "./node_modules/karma/bin/karma start",
     "start": "node server.js",
     "start-debug": "DEBUG='abba*' npm start",
+    "heroku-postbuild": "./node_modules/webpack/bin/webpack.js",
     "start-watch": "DEBUG='abba*' ./node_modules/nodemon/bin/nodemon.js server.js",
     "backend-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha ./backend-test",
     "test": "npm run frontend-test &&  npm run backend-test",
@@ -31,7 +32,7 @@
     "url": "https://github.com/adamstelle/abba/issues"
   },
   "homepage": "https://github.com/adamstelle/abba#readme",
-  "devDependencies": {
+  "dependencies": {
     "aws-mocks": "0.0.10",
     "aws-sdk-mock": "1.5.0",
     "bcrypt": "0.8.7",
@@ -76,9 +77,7 @@
     "style-loader": "^0.13.1",
     "ui-router": "^1.0.0-alpha.3",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2"
-  },
-  "dependencies": {
+    "webpack": "^1.13.2",
     "angular-mocks": "^1.5.8",
     "aws-sdk": "2.6.7",
     "bootstrap": "^3.3.7",
