@@ -43,7 +43,6 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
   };
 
   this.getResidence = function(residenceData) {
-    
     this.currentResidence = residenceData;
     console.log(this.currentResidence);
     return this.currentResidence;
