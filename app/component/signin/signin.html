@@ -9,8 +9,9 @@
 
 	<div class="form-group" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
 		<input type="email" name="email" id="email" class="form-control input-lg" ng-model="signinCtrl.user.email" placeholder="Email Address" tabindex="4" required>
-	  <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">You email address is required.</p>
+	  <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">Your email address is required.</p>
 	</div>
+
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
@@ -26,5 +27,6 @@
 		<div class="col-xs-12 col-md-12">
 			<input type="submit" value="Login in" class="btn btn-primary btn-block btn-lg" tabindex="7"  ng-disabled="loginForm.$invalid"></div>
 	</div>
+
 	<p ng-show="signinCtrl.errorMessage" class="pull-right help-block" ng-class="{ 'text-danger': signinCtrl.errorMessage }">Your email / password is invalid</p>
 </form>

@@ -9,10 +9,10 @@ module.exports = {
 };
 
 function SignupController($log, $location, authService, profileService){
-  $log.debug('init Singup Ctrl');
+  $log.debug('init Signup Ctrl');
 
   this.signup = function(){
-    $log.debug('init singupCtrl.signup()');
+    $log.debug('init signupCtrl.signup()');
 
     return authService.signup(this.user)
     .then(() => {
