@@ -86,7 +86,7 @@
     <div class="panel panel-primary">
       <div class="panel-body">
       <ul class="list-group" ng-repeat="residence in newResidenceCtrl.residences track by ($index)">
-        <li class="list-group-item clearfix"> 
+        <li class="list-group-item clearfix" ng-click="newResidenceCtrl.getResidence(residence)"> 
             <span class="pull-right">
                 <span class="btn btn-xs btn-primary" uib-tooltip="New Bedroom" 
                   ng-click="newResidenceCtrl.getResidence(residence) && newResidenceCtrl.openPopupModalAddBedroom()">
