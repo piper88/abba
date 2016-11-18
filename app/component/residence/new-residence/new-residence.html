@@ -14,11 +14,11 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Type</label>
             <div class="col-md-8">
-              <select class="form-control" name="type" class="form-control" id="type" ng-model="newResidenceCtrl.residence.type" required>    
+              <select class="form-control" name="type" class="form-control" id="type" ng-model="newResidenceCtrl.residence.type" required>
                 <option ng-selected="true" ng-value="House">House</option>
-                <option ng-value="Apartment">Apartment</option>      
-                <option ng-value="Condo">Condo</option>    
-              </select>   
+                <option ng-value="Apartment">Apartment</option>
+                <option ng-value="Condo">Condo</option>
+              </select>
             </div>
           </div>
 
@@ -47,7 +47,7 @@
           <!-- Text input-->
 
           <div class="form-group">
-            <label class="col-md-4 control-label">City</label>  
+            <label class="col-md-4 control-label">City</label>
               <div class="col-md-8">
               <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -56,7 +56,7 @@
             </div>
           </div>
 
-          <div class="form-group"> 
+          <div class="form-group">
           <label class="col-md-4 control-label">State</label>
             <div class="col-md-8 selectContainer">
                 <div class="input-group">
@@ -69,7 +69,7 @@
           </div>
 
         <div class="form-group">
-            <label class="col-md-4 control-label">Zip Code</label>  
+            <label class="col-md-4 control-label">Zip Code</label>
               <div class="col-md-8">
               <div class="input-group">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -86,31 +86,31 @@
     <div class="panel panel-primary">
       <div class="panel-body">
       <ul class="list-group" ng-repeat="residence in newResidenceCtrl.residences track by ($index)">
-        <li class="list-group-item clearfix"> 
+        <a class="list-group-item clearfix" ng-click="newResidenceCtrl.getResidence(residence)">{{residence._id}}
             <span class="pull-right">
-                <span class="btn btn-xs btn-primary" uib-tooltip="New Bedroom" 
+                <span class="btn btn-xs btn-primary" uib-tooltip="New Bedroom"
                   ng-click="newResidenceCtrl.getResidence(residence) && newResidenceCtrl.openPopupModalAddBedroom()">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Bedroom
                 </span>
                 <span class="btn btn-xs btn-danger" uib-tooltip="Remove Residence" ng-click="newResidenceCtrl.deleteResidence(residence._id)">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 </span>
-            </span> 
+            </span>
             {{ residence.type }} - {{ residence.sqft }} Sqft <br/>
             {{ residence.street }} {{ residence.city }},{{ residence.state }}  {{ residence.zip | uppercase }}
-        </li>
+        </a>
       </ul>
        <div class="well text-center well-round" ng-if="!newResidenceCtrl.residences.length">
           There is no Residence
         </div>
-       <ul ng-if="newResidenceCtrl.residences.length" class="text-center" uib-pagination boundary-links="true" 
+       <ul ng-if="newResidenceCtrl.residences.length" class="text-center" uib-pagination boundary-links="true"
           total-items="newResidenceCtrl.residences.length"
           ng-model="newResidenceCtrl.currentPage"
           ng-change="newResidenceCtrl.pageChanged()"
-          class="pagination-sm" 
+          class="pagination-sm"
           previous-text="&lsaquo;"
-          next-text="&rsaquo;" 
-          first-text="&laquo;" 
+          next-text="&rsaquo;"
+          first-text="&laquo;"
           last-text="&raquo;"
           items-per-page="4"
           max-size="4">
