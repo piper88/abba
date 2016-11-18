@@ -28,11 +28,9 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
 
   this.createNewResidence = function(residence){
     $log.debug('init createNewResidences()');
-    console.log(residence);
-    return residenceService.createResidence(residence)
-   .then( data => {
-     this.residences.unshift(data);
-     console.log('newResidenc', data);
+    residenceService.createResidence(residence)
+   .then(() => {
+     $log.debug('created a newwwwwwwwwwwwww residence');
    });
   };
 
@@ -45,7 +43,6 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
 
   this.getResidence = function(residenceData) {
     this.currentResidence = residenceData;
-    console.log(this.currentResidence);
     this.fetchBedrooms(this.currentResidence._id);
     return this.currentResidence;
   };
