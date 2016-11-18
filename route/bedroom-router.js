@@ -37,6 +37,7 @@ bedroomRouter.get('/api/residence/:resID/bedroom/:id', bearerAuth, function(req,
   debug('GET /api/residence/:resID/bedroom/:id');
 
   Bedroom.findById(req.params.id)
+  .populate('photo')
   .then(bedroom => {
     if (bedroom.userID.toString() !== req.user._id.toString())
       return next(createError(401, 'invalid userid'));
@@ -50,6 +51,7 @@ bedroomRouter.get('/api/residence/:resID/bedrooms', bearerAuth, function(req, re
   console.log('req.user', req.user);
   console.log('resID', req.params.resID);
   Bedroom.find({residenceID: req.params.resID})
+  .populate('photo')
   .then(bedrooms => {
     for(var i=0; i< bedrooms.length; ++i){
       let room = bedrooms[i];

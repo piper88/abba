@@ -78,7 +78,14 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
   this.fetchBedrooms = function(residenceID) {
     residenceService.fetchBedrooms(residenceID)
     .then((bedrooms) => {
-      console.log('BEDROOOOOOOOOOMS', bedrooms);
+      return this.currentBedrooms = bedrooms;
+    });
+  };
+
+  this.deleteBedroom = function(residenceID, bedroomID){
+    residenceService.deleteBedroom(residenceID, bedroomID)
+    .then(() => {
+      $log.debug('successfully deleted bedroom');
     });
   };
 
