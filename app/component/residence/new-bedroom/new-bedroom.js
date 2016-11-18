@@ -32,11 +32,11 @@ function NewBedroomController($log, $http, residenceService, picService){
   this.uploadBedroomPhoto = function(){
     $log.debug('init uploadBedroomPhoto');
     console.log(this.pic, 'THIS.PIC');
-    // this.pic = {};
     picService.uploadBedroomPhoto(this.newBed, this.pic)
-    .then(() => {
-      this.bedroom.photo = this.pic;
+    .then(dataPic => {
+      this.bedroom.photo = dataPic._id;
       this.pic = null;
+      console.log(this.bedroom);
     });
   };
 

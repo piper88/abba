@@ -82,14 +82,14 @@
       </div>
   </div>
   </div>
-
   <div class="col-md-7">
     <div class="panel panel-primary">
       <div class="panel-body">
       <ul class="list-group" ng-repeat="residence in newResidenceCtrl.residences track by ($index)">
         <li class="list-group-item clearfix"> 
             <span class="pull-right">
-                <span class="btn btn-xs btn-primary" uib-tooltip="New Bedroom" ng-click="newResidenceCtrl.getResidence(residence)">
+                <span class="btn btn-xs btn-primary" uib-tooltip="New Bedroom" 
+                  ng-click="newResidenceCtrl.getResidence(residence) && newResidenceCtrl.openPopupModalAddBedroom()">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Bedroom
                 </span>
                 <span class="btn btn-xs btn-danger" uib-tooltip="Remove Residence" ng-click="newResidenceCtrl.deleteResidence(residence._id)">
@@ -127,6 +127,11 @@
         </div>
       </div>
       <div class="panel-body">
+          <div class="list-group" id="list1">
+             <a href="#" class="list-group-item ">Bedroom Information
+               <!--<input title="toggle all" type="checkbox" class="all pull-right">-->
+             </a>
+          </div>
         <!--<new-bedroom residence-data="newResidenceCtrl.currentResidence"></new-bedroom>-->
       </div>
     </div>
