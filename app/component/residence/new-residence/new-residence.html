@@ -86,7 +86,7 @@
   <div class="col-md-7">
     <div class="panel panel-primary">
       <div class="panel-body">
-      <ul class="list-group" ng-repeat="residence in newResidenceCtrl.residences track by $index">
+      <ul class="list-group" ng-repeat="residence in newResidenceCtrl.residences track by ($index)">
         <li class="list-group-item clearfix"> 
             <span class="pull-right">
                 <span class="btn btn-xs btn-primary" uib-tooltip="New Bedroom" ng-click="newResidenceCtrl.getResidence(residence)">
@@ -100,16 +100,20 @@
             {{ residence.street }} {{ residence.city }},{{ residence.state }}  {{ residence.zip | uppercase }}
         </li>
       </ul>
-       <ul uib-pagination boundary-links="true" 
+       <div class="well text-center well-round" ng-if="!newResidenceCtrl.residences.length">
+          There is no Residence
+        </div>
+       <ul ng-if="newResidenceCtrl.residences.length" class="text-center" uib-pagination boundary-links="true" 
           total-items="newResidenceCtrl.residences.length"
           ng-model="newResidenceCtrl.currentPage"
+          ng-change="newResidenceCtrl.pageChanged()"
           class="pagination-sm" 
           previous-text="&lsaquo;"
           next-text="&rsaquo;" 
           first-text="&laquo;" 
           last-text="&raquo;"
-          ng-change="newResidenceCtrl.pageChanged()"
-          max-size="newResidenceCtrl.maxSize">
+          items-per-page="4"
+          max-size="4">
       </ul>
     </div>
     </div>
@@ -123,7 +127,7 @@
         </div>
       </div>
       <div class="panel-body">
-        <new-bedroom residence-data="newResidenceCtrl.currentResidence"></new-bedroom>
+        <!--<new-bedroom residence-data="newResidenceCtrl.currentResidence"></new-bedroom>-->
       </div>
     </div>
   </div>
