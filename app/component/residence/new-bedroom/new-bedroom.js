@@ -4,7 +4,7 @@ require('./_new-bedroom.scss');
 
 module.exports = {
   template: require('./new-bedroom.html'),
-  controller: ['$log','$http', 'residenceService', 'picService', NewBedroomController],
+  controller: ['$log','$http', 'residenceService', 'picService','$timeout', NewBedroomController],
   controllerAs: 'newBedroomCtrl',
   bindings: {
     residenceData: '<',
@@ -12,8 +12,9 @@ module.exports = {
   },
 };
 
-function NewBedroomController($log, $http, residenceService, picService){
+function NewBedroomController($log, $http, residenceService, picService, $timeout){
   $log.debug('init newBedroomCtrl');
+  this.showAlert = false;
 
   this.createNewBed = function(){
     $log.debug('init createNewBedroom()');
@@ -22,8 +23,7 @@ function NewBedroomController($log, $http, residenceService, picService){
     residenceService.addNewBedroom(this.residenceData._id, this.bedroom)
     .then(bedroom => {
       this.newBed = bedroom;
-      console.log('bedroom', bedroom);
-      // this.closeModal();
+      this.showAlert = true;
     });
   };
 
@@ -110,5 +110,12 @@ function NewBedroomController($log, $http, residenceService, picService){
         }
       }
     }
+  };
+
+  this.closeAlert = function() {
+    this.showAlert = false;
+  };
+  this.showAlertForFiveSec = function() {
+    $timeout(this.closeAlert, 5000); 
   };
 }
