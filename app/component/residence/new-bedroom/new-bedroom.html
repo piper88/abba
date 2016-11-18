@@ -1,5 +1,6 @@
 <div class="">
   <div class="col-md-12">
+    <div uib-alert class="alert"  ng-init="newBedroomCtrl.showAlertForFiveSec()" ng-show="newBedroomCtrl.showAlert" close="newBedroomCtrl.closeAlert()" style="background-color:#666;color:white">Bedroom saved successfuly!</div>
     <form class="form-horizontal"
         novalidate>
         <div class="form-group">
@@ -36,7 +37,7 @@
         <img ngf-src="newBedroomCtrl.pic.file"/>
       </div>
 
-      <div class="btn btn-default"
+      <div class="btn btn-primary"
         class="drop-box"
         ngf-select 
         ngf-pattern="'image/*'"
@@ -46,6 +47,6 @@
         ngf-resize="{width: 100, height: 100}"
         ng-model="newBedroomCtrl.pic.file"> Select Image
       </div>
-      <button class="btn btn-default" ng-click="newBedroomCtrl.uploadBedroomPhoto()" ng-disabled="!newBedroomCtrl.pic.file">Upload Image</button>
+      <button class="btn btn-danger" ng-click="newBedroomCtrl.uploadBedroomPhoto()" ng-disabled="!newBedroomCtrl.pic.file">Upload Image</button>
     </div>
 </div>
