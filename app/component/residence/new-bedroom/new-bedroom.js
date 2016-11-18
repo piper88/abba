@@ -15,11 +15,7 @@ module.exports = {
 
 function NewBedroomController($log, $http, residenceService, picService, $timeout){
   $log.debug('init newBedroomCtrl');
-<<<<<<< HEAD
-  $log.debug('ZIS IS ZEE MODAL', this.modalInstance);
-=======
   this.showAlert = false;
->>>>>>> 1ab826bc265962bd9e57eab261f49ef0ae871e35
 
   this.createNewBed = function(){
     $log.debug('init createNewBedroom()');
@@ -121,6 +117,6 @@ function NewBedroomController($log, $http, residenceService, picService, $timeou
     this.showAlert = false;
   };
   this.showAlertForFiveSec = function() {
-    $timeout(this.closeAlert, 5000); 
+    $timeout(this.closeAlert, 5000);
   };
 }
