@@ -14,6 +14,7 @@ const profileSchema = mongoose.Schema({
   status: {type: String, required: false},
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},
   photo: {type: mongoose.Schema.Types.ObjectId, ref:'photo'},
+  imageURI: {type: String},
 });
 
 const Profile = module.exports = mongoose.model('profile', profileSchema);

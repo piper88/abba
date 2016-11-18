@@ -35,6 +35,7 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
      console.log('newResidenc', data);
    });
   };
+
   this.fetchResidences = function() {
     residenceService.fetchResidences()
     .then(data => {
@@ -45,6 +46,7 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
   this.getResidence = function(residenceData) {
     this.currentResidence = residenceData;
     console.log(this.currentResidence);
+    this.fetchBedrooms(this.currentResidence._id);
     return this.currentResidence;
   };
 
@@ -73,8 +75,15 @@ function NewResidenceController($log, $window, $rootScope, $location, authServic
     });
   };
 
+  this.fetchBedrooms = function(residenceID) {
+    residenceService.fetchBedrooms(residenceID)
+    .then((bedrooms) => {
+      console.log('BEDROOOOOOOOOOMS', bedrooms);
+    });
+  };
+
   this.fetchResidences();
   this.currentPage = 1;
   this.itemsPerPage = 4;
-  
+
 }

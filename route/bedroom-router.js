@@ -45,16 +45,21 @@ bedroomRouter.get('/api/residence/:resID/bedroom/:id', bearerAuth, function(req,
   .catch(err => next(createError(404, err.message)));
 });
 
-bedroomRouter.get('/api/residence/:resID/bedrooms/', bearerAuth, function(req, res, next) {
+bedroomRouter.get('/api/residence/:resID/bedrooms', bearerAuth, function(req, res, next) {
   debug('GET /api/residence/:resID/bedrooms/');
-
+  console.log('req.user', req.user);
+  console.log('resID', req.params.resID);
   Bedroom.find({residenceID: req.params.resID})
   .then(bedrooms => {
-    if (bedrooms.userID.toString() !== req.user._id.toString())
-      return next(createError(401, 'invalid userid'));
+    for(var i=0; i< bedrooms.length; ++i){
+      let room = bedrooms[i];
+      if (room.userID.toString() !== req.user._id.toString())
+        return Promise.reject(createError(401, 'not your bedroom'));
+    }
+
     res.json(bedrooms);
   })
-  .catch(err => next(createError(404, err.message)));
+  .catch(err => err.status ? next(err) : next(createError(404, 'no beedrooms')));
 });
 
 bedroomRouter.put('/api/residence/:resID/bedroom/:id', bearerAuth, jsonParser, function(req, res, next) {

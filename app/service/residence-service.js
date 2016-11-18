@@ -7,7 +7,7 @@ function ResidenceService($q, $log, $http, authService){
   let service = {};
   service.residences = [];
   service.bedrooms = [];
-  
+
   service.createResidence = function(residence){
     $log.debug('ResidenceService.createResidence()');
 
@@ -168,6 +168,7 @@ function ResidenceService($q, $log, $http, authService){
 
   service.fetchBedrooms = function(residenceID){
     $log.debug('residenceService.fetchBedrooms()');
+
     return authService.getToken()
     .then ( token => {
       let url = `${__API_URL__}/api/residence/${residenceID}/bedrooms`;
