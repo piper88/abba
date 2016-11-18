@@ -64,10 +64,12 @@ Bedroom.removeBedroom = function(bedroomID) {
     })
     .then(() => {
       let removeChildren = [];
-      tempBed.photos.forEach( photo => {
-        removeChildren.push(Bedroom.deleteAllPhotos(photo._id));
-        removeChildren.push(Photo.findById(photo._id).remove());
-      });
+      if(tempBed.photos) {
+        tempBed.photos.forEach( photo => {
+          removeChildren.push(Bedroom.deleteAllPhotos(photo._id));
+          removeChildren.push(Photo.findById(photo._id).remove());
+        });
+      }
       return Promise.all(removeChildren);
     })
     .then(() => {

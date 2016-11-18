@@ -63,7 +63,7 @@ describe('testing residence service', function() {
 
   afterEach(() => {
     this.authService.setToken(null);
-    this.$window.localStorage.clear();
+    this.$window.localStorage.clear(); 
   });
 
   describe('testing residenceService.createResidence', () => {
