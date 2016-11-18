@@ -139,7 +139,7 @@ function ResidenceService($q, $log, $http, authService){
     });
   };
 
-  service.deleteBedroom = function(residenceID,bedroomID){
+  service.deleteBedroom = function(residenceID, bedroomID){
     return authService.getToken()
     .then ( token => {
       let url = `${__API_URL__}/api/residence/${residenceID}/bedroom/${bedroomID}`;

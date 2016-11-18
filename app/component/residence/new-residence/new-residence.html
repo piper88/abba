@@ -86,7 +86,7 @@
     <div class="panel panel-primary">
       <div class="panel-body">
       <ul class="list-group" ng-repeat="residence in newResidenceCtrl.residences track by ($index)">
-        <a class="list-group-item clearfix" ng-click="newResidenceCtrl.getResidence(residence)">{{residence._id}}
+        <a class="list-group-item clearfix" ng-click="newResidenceCtrl.getResidence(residence)">
             <span class="pull-right">
                 <span class="btn btn-xs btn-primary" uib-tooltip="New Bedroom"
                   ng-click="newResidenceCtrl.getResidence(residence) && newResidenceCtrl.openPopupModalAddBedroom()">
@@ -101,7 +101,7 @@
         </a>
       </ul>
        <div class="well text-center well-round" ng-if="!newResidenceCtrl.residences.length">
-          There is no Residence
+          There are no Residences
         </div>
        <ul ng-if="newResidenceCtrl.residences.length" class="text-center" uib-pagination boundary-links="true"
           total-items="newResidenceCtrl.residences.length"
@@ -127,12 +127,26 @@
         </div>
       </div>
       <div class="panel-body">
-          <div class="list-group" id="list1">
-             <a href="#" class="list-group-item ">Bedroom Information
-               <!--<input title="toggle all" type="checkbox" class="all pull-right">-->
-             </a>
+        <div class="media" ng-repeat="bedroom in newResidenceCtrl.currentBedrooms">
+          <a class="media-left" href="#">
+            <img class="media-object" ng-src="{{bedroom.photo.imageURI}}">
+          </a>
+          <div class="media-body">
+            <ul class="list-group">
+              <a class="list-group-item clearfix" ng-click="newResidenceCtrl.getResidence(residence)">
+                  <span class="pull-right">
+                      <span class="btn btn-xs btn-danger" uib-tooltip="Remove Bedroom" ng-click="newResidenceCtrl.deleteBedroom(bedroom.residenceID, bedroom._id)">
+                          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                      </span>
+                  </span>
+                  Bedroom type: {{ bedroom.type }}<br/>
+                  Bed size: {{ bedroom.bedSize }}<br/>
+                  Private bath: {{ bedroom.privateBath }}<br/>
+                  <span class="badge">Nightly estimate: {{ bedroom.estimate | number:2 | currency }}</span><br/>
+              </a>
+            </ul>
           </div>
-        <!--<new-bedroom residence-data="newResidenceCtrl.currentResidence"></new-bedroom>-->
+        </div>
       </div>
     </div>
   </div>
