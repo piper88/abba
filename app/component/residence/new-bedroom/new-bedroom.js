@@ -9,6 +9,7 @@ module.exports = {
   bindings: {
     residenceData: '<',
     closeModal: '&',
+    modalInstance: '<',
   },
 };
 
@@ -35,6 +36,9 @@ function NewBedroomController($log, $http, residenceService, picService, $timeou
       this.bedroom.photo = dataPic;
       this.bedroom.imageURI = dataPic.imageURI;
       this.pic = null;
+      this.closeModal();
+      // this.modalInstance.close();
+      console.log('ARE WE HEREEEEEEEEEEEE');
     });
   };
 
@@ -113,6 +117,6 @@ function NewBedroomController($log, $http, residenceService, picService, $timeou
     this.showAlert = false;
   };
   this.showAlertForFiveSec = function() {
-    $timeout(this.closeAlert, 5000); 
+    $timeout(this.closeAlert, 5000);
   };
 }
