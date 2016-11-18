@@ -18,12 +18,9 @@ function NewBedroomController($log, $http, residenceService, picService){
   this.createNewBed = function(){
     $log.debug('init createNewBedroom()');
     this.bedroom.estimate = this.createEstimate(this.bedroom);
-    console.log('dsfsdfafasFasf',this.residenceData);
     residenceService.addNewBedroom(this.residenceData._id, this.bedroom)
     .then(bedroom => {
       this.newBed = bedroom;
-      console.log('bedroom', bedroom);
-      // this.closeModal();
     });
   };
 
@@ -31,13 +28,11 @@ function NewBedroomController($log, $http, residenceService, picService){
 
   this.uploadBedroomPhoto = function(){
     $log.debug('init uploadBedroomPhoto');
-    console.log(this.pic, 'THIS.PIC');
     picService.uploadBedroomPhoto(this.newBed, this.pic)
     .then(dataPic => {
       this.bedroom.photo = dataPic;
       this.bedroom.imageURI = dataPic.imageURI;
       this.pic = null;
-      console.log('this.bedroom!!!!!!!!!!!!!', this.bedroom);
     });
   };
 
