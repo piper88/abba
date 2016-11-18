@@ -13,6 +13,7 @@
     "test-watch": "./node_modules/karma/bin/karma start",
     "start": "node server.js",
     "start-debug": "DEBUG='abba*' npm start",
+    "heroku-postbuild": "./node_modules/webpack/bin/webpack.js",
     "start-watch": "DEBUG='abba*' ./node_modules/nodemon/bin/nodemon.js server.js",
     "backend-test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha ./backend-test",
     "test": "npm run frontend-test &&  npm run backend-test",
