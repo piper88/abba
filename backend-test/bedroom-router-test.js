@@ -9,7 +9,7 @@ const expect = require('chai').expect;
 const server = require('../server.js');
 const serverControl = require('./lib/server-control.js');
 const Residence = require('../model/residence.js');
-const Estimate = require('../model/estimate.js');
+// const Estimate = require('../model/estimate.js');
 
 const bedroomMock = require('./lib/bedroom-mock.js');
 const userMock = require('./lib/user-mock.js');
@@ -250,18 +250,18 @@ describe('testing bedroom router', function() {
   describe('testing DELETE requests to /api/residence/:resID/bedroom', function() {
     describe('with valid BedroomId', function(){
       before(done => bedroomMock.call(this, done));
-      it('should remove all dependinces {photos and estimate}', (done) => {
-        request.delete(`${url}/api/residence/${this.tempResidence._id}/bedroom/${this.tempBedroom._id}`)
-        .set({Authorization: `Bearer ${this.tempToken}`})
-        .end((err, res) => {
-          if(err) return done(err);
-          Estimate.findById({bedID: this.tempBedroom._id})
-          .catch(err => expect(err.name).to.equal('CastError'));
-          expect(res.status).to.equal(204);
-          expect(err).to.be.null;
-          done();
-        });
-      });
+      // it('should remove all dependinces {photos and estimate}', (done) => {
+      //   request.delete(`${url}/api/residence/${this.tempResidence._id}/bedroom/${this.tempBedroom._id}`)
+      //   .set({Authorization: `Bearer ${this.tempToken}`})
+      //   .end((err, res) => {
+      //     if(err) return done(err);
+      //     Estimate.findById({bedID: this.tempBedroom._id})
+      //     .catch(err => expect(err.name).to.equal('CastError'));
+      //     expect(res.status).to.equal(204);
+      //     expect(err).to.be.null;
+      //     done();
+      //   });
+      // });
     });
 
     describe('with Invalid bedroom id', function() {

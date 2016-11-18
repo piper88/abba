@@ -17,7 +17,7 @@ const bearerAuth = require('../lib/bearer-auth-middleware.js');
 // constants
 const photoRouter = module.exports = Router();
 
-photoRouter.post('/api/profile/:profID/photo', jsonParser, bearerAuth, upload.single('image'), photoMiddleware.profilePhotoUpload, function(req, res, next) {
+photoRouter.post('/api/profile/:profID/photo', jsonParser, bearerAuth, upload.single('file'), photoMiddleware.profilePhotoUpload, function(req, res, next) {
   debug('POST /api/profile/:profID/photo');
   Profile.findById(req.params.profID)
   .then(profile => {
@@ -35,17 +35,10 @@ photoRouter.delete('/api/profile/:profID/photo/:id', bearerAuth, photoMiddleware
   .catch(err => next(createError(404, err.message)));
 });
 
-photoRouter.post('/api/bedroom/:bedroomID/photo', jsonParser, bearerAuth, upload.array('image'), photoMiddleware.bedroomPhotoUpload, function(req, res, next) {
+photoRouter.post('/api/bedroom/:bedroomID/photo', bearerAuth, upload.single('file'), photoMiddleware.bedroomPhotoUpload, function(req, res) {
   debug('POST /api/bedroom/:bedroomID/photo');
-  Bedroom.findById(req.params.bedroomID)
-  .then(bedroom => {
-    if(bedroom.userID.toString() !== req.user._id.toString())
-      return next(createError(401, 'invalid userID'));
-    Bedroom.findByIdAndAddPhotos(req.params.bedroomID, req.photos)
-    .then(() => res.json(req.photos));
-  });
+  res.json(req.photoData);
 });
-
 
 photoRouter.delete('/api/bedroom/:bedroomID/photo/:id', bearerAuth, photoMiddleware.photoDelete, function(req, res, next) {
   debug('DELETE /api/bedroom/:bedroomID/photo/:id');

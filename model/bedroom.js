@@ -21,7 +21,7 @@ const bedroomSchema = mongoose.Schema({
   privateBath: {type: Boolean, required: true},
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},
   residenceID: {type: mongoose.Schema.Types.ObjectId, required: true},
-  photos: [{type: mongoose.Schema.Types.ObjectId, ref: 'photos'}],
+  photo: {type: mongoose.Schema.Types.ObjectId, ref: 'photos'},
   estimateID: {type: mongoose.Schema.Types.ObjectId},
 });
 

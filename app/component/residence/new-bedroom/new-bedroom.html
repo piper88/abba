@@ -1,14 +1,6 @@
 <form class="form-horizontal col-md-6"
-    novalidate
-    ng-submit="newBedroomCtrl.createNewBed()">
+    novalidate>
 
-    <!-- Text input-->
-    <!-- <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">type</label>
-      <div class="col-md-4">
-        <input id="type" name="type"  class="form-control input-md" type="text" ng-model="newBedroomCtrl.bedroom.type" required>
-      </div>
-    </div> -->
     <div class="form-group">
       <label for="exampleSelect1">Bedroom Type</label>
       <select class="form-control" id="exampleSelect1" ng-model="newBedroomCtrl.bedroom.type" required>
@@ -38,6 +30,12 @@
     </div>
 
 
+    <div class="btn btn-default" ngf-select ng-model="newBedroomCtrl.pic.file">Select Image
+    </div>
+    <button class="btn btn-primary" ng-click="newBedroomCtrl.uploadBedroomPhoto()">Upload</button>
+
+  <!-- ng-click="bedroomModalCtrl.close()"  -->
+
     <!-- Button -->
-    <button ng-click="bedroomModalCtrl.close()" type="submit" class="btn btn-primary">Add Bedroom</button>
+    <button ng-click="newBedroomCtrl.createNewBed()" class="btn btn-primary">Add Bedroom</button>
   </form>
