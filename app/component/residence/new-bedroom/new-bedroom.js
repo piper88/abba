@@ -22,10 +22,7 @@ function NewBedroomController($log, $http, residenceService, picService, $timeou
     residenceService.addNewBedroom(this.residenceData._id, this.bedroom)
     .then(bedroom => {
       this.newBed = bedroom;
-<<<<<<< HEAD
       this.showAlert = true;
-=======
->>>>>>> 08e9fe45e284784f5138e18be890df32be24ae3d
     });
   };
 
