@@ -7,14 +7,17 @@
     </div>
     <div class="panel-body"residenceID>
       <div class="col-md-4">
-        <p class="list-group-item-text">{{ listResidenceCtrl.residence.sqft }} sqft</p>
-        <p class="list-group-item-text">
-          {{ listResidenceCtrl.residence.street }}
-          {{ listResidenceCtrl.residence.city }}
+       <p class="list-group-item-text">
+          <span class="glyphicon glyphicon-map-marker"></span>
+          {{ listResidenceCtrl.residence.street }} {{ listResidenceCtrl.residence.city }}
           {{ listResidenceCtrl.residence.state }}, {{ listResidenceCtrl.residence.zip | uppercase }}</p>
+        <p class="list-group-item-text">{{ listResidenceCtrl.residence.sqft }} sqft</p>
         <p class="list-group-item-text"></p>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8 text-right">
+        <p>Number of bedroom:
+          <span class="label label-info"> {{listResidenceCtrl.residence.bedrooms.length}} </span>
+        </p>
       </div>
     </div>
     <div class="panel-footer text-right">
