@@ -7,12 +7,14 @@ const Promise = require('bluebird');
 const mongoose = require('mongoose');
 const createError = require('http-errors');
 const debug = require('debug')('abba:user');
+
 const Schema = mongoose.Schema;
 
 const userSchema = Schema({
   email: {type: String, required: true, unique: true},
-  password: {type: String},
+  password: {type: String, required: true},
   findHash: {type: String, unique: true},
+  // profile: TBD
 });
 
 userSchema.methods.generatePasswordHash = function(password){
