@@ -51,7 +51,7 @@ module.exports = {
   sassLoader: {
     includePaths: [`${__dirname}/app/scss/lib`],
   },
-  module: { 
+  module: {
     loaders: [
       {
         test: /\.js$/,
