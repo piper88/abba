@@ -11,7 +11,7 @@ const Residence = require('../model/residence.js');
 const Bedroom = require('../model/bedroom.js');
 
 const bedroomRouter = module.exports = Router();
-
+ 
 bedroomRouter.post('/api/residence/:resID/bedroom', bearerAuth, jsonParser, function(req, res, next) {
   debug('POST /api/residence/:resID/bedroom');
   req.body.userID = req.user._id;
