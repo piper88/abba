@@ -143,7 +143,9 @@
                   Bedroom type: {{ bedroom.type }}<br/>
                   Bed size: {{ bedroom.bedSize }}<br/>
                   Private bath: {{ bedroom.privateBath }}<br/>
-                  <span class="badge">Nightly estimate: {{ bedroom.estimate | number:2 | currency }}</span><br/>
+                  <span class="label label-sm label-primary pull-right"> Nightly estimat  <br/>{{ bedroom.estimate | number:2 | currency }} </span>
+                  <span class="label label-sm label-warning pull-right"> Weekly estimate  <br/>${{ bedroom.estimate * 7 | number:2 }}</span>
+                  <span class="label label-sm label-default pull-right"> Monthly estimate  <br/>${{ bedroom.estimate * 30 | number:2 }} </span>
               </a>
             </ul>
           </div>
