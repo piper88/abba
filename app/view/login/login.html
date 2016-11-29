@@ -1,0 +1,18 @@
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6" style="padding:5%">
+  <form name="loginForm" role="form" ng-submit="signupCtrl.signup(signupCtrl.user, signupCtrl.profile)">
+      <a ng-href="{{loginCtrl.googleAuthURL}}" class="btn btn-info btn-block btn-lg" tabindex="1">Login with Google</a>
+      <signin ng-if="loginCtrl.showSignin"></signin>
+
+      <signup ng-if="!loginCtrl.showSignin"></signup>
+      <hr class="middle-line">
+      <p ng-if="loginCtrl.showSignin" class="text-danger text-justify"> Don't have an account? 
+      <a autofocus="" ng-click="loginCtrl.showSignin=false"> Sign Up here </a>
+      </p>
+        <p ng-if="!loginCtrl.showSignin" class="text-danger text-justify"> Are you a member? 
+        <a autofocus="" ng-click="loginCtrl.showSignin=true"> Sign In here </a>
+      </p>
+    </div>
+   </form>
+ </div>
+</div>

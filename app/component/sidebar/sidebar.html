@@ -1,0 +1,48 @@
+
+<div class="profile-sidebar">
+		<div class="profile-userpic">
+			<img src="../../images/about-bk-.png" class="img-responsive" alt="">
+		</div>
+    <br/>
+      <div class="text-center">
+        <button type="button" class="btn btn-primary btn-sm">
+          <span class="glyphicon glyphicon-upload"></span>
+          Upload Image</button>
+      </div>
+
+      <div class="profile-usermenu">
+					<ul class="nav">
+						<li class="active">
+						  <a href="javascript:void(0)">
+							<i class="glyphicon glyphicon-user"></i>
+              {{sidebarCtrl.profile.firstName}} {{sidebarCtrl.profile.lastName}}
+						  </a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+							<i class="glyphicon glyphicon-phone"></i>
+              {{sidebarCtrl.profile.phone}}
+							  </a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+							<i class="glyphicon glyphicon-envelope"></i>
+							{{sidebarCtrl.profile.email}}
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<h6><i class="glyphicon glyphicon-star-empty"></i>
+									Number of Residence
+									<label class="label label-warning"> {{sidebarCtrl.residenceCount.length}}</label>
+								</h6>
+								<h6><i class="glyphicon glyphicon-star-empty"></i>
+									Number of Bedroom
+									<!-- <label class="label label-warning"> {{sidebarCtrl.residenceCount[0].bedrooms.length}}</label> -->
+								</h6>
+						  </a>
+						</li>
+					</ul>
+				</div>
+		</div>
+</div>

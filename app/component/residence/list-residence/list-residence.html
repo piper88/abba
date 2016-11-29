@@ -1,0 +1,31 @@
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="title">
+        {{ listResidenceCtrl.residence.type }}
+      </div>
+    </div>
+    <div class="panel-body"residenceID>
+      <div class="col-md-4">
+       <p class="list-group-item-text">
+          <span class="glyphicon glyphicon-map-marker"></span>
+          {{ listResidenceCtrl.residence.street }} {{ listResidenceCtrl.residence.city }}
+          {{ listResidenceCtrl.residence.state }}, {{ listResidenceCtrl.residence.zip | uppercase }}</p>
+        <p class="list-group-item-text">{{ listResidenceCtrl.residence.sqft }} sqft</p>
+        <p class="list-group-item-text"></p>
+      </div>
+      <div class="col-md-8 text-right">
+        <p>Number of bedroom:
+          <span class="label label-info"> {{listResidenceCtrl.residence.bedrooms.length}} </span>
+        </p>
+      </div>
+    </div>
+    <div class="panel-footer text-right">
+      <button class="btn btn-default"
+        ng-click="listResidenceCtrl.openPopupModal()">
+        <span class="glyphicon glyphicon-plus-sign"></span>  Bedroom </button>
+      <button class="btn btn-warning"
+        ng-click="listResidenceCtrl.openPopupModalRemoveResidence()">
+        <span class="glyphicon glyphicon-trash"></span> Delete Residence </button>
+    </div>
+  </div>

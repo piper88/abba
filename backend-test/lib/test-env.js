@@ -1,0 +1,11 @@
+process.env.AWS_ACCESS_KEY_ID='fakeidhahahahh';
+process.env.AWS_SECRET_ACCESS_KEY='fakekeyhahahahahah';
+process.env.APP_SECRET='yeah this is a great fucking secret';
+process.env.DEBUG='abba*';
+process.env.PORT=3000;
+process.env.TITLE='abba test';
+process.env.API_URL='http://localhost:3000';
+process.env.NODE_ENV='test';
+process.env.MONGODB_URI='mongodb://localhost/abbadev';
+process.env.GOOGLE_CLIENT_ID='fakeingagoogleclientid';
+process.env.GOOGLE_CLIENT_SECRET='fake secret for google';

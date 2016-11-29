@@ -1,0 +1,27 @@
+.fileUploader {
+  min-height: 170px;
+  width: 520px;
+  margin: 0 auto;
+  border: 2px dotted #9e9e9e;
+  border-radius: 7px;
+  background: #efefef;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-top:5px;
+}
+.fileUploader img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.alert {
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+
+  display: block !important;
+  opacity: 1;
+  max-height:50px;
+}
